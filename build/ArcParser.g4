@@ -11,12 +11,12 @@ compilationUnit
 
 // Import Declaration
 importDecl
-    : IMPORT IMPORT_PATH
+    : IMPORT STRING_LITERAL
     | IMPORT LPAREN importSpec* RPAREN
     ;
 
 importSpec
-    : IMPORT_PATH
+    : STRING_LITERAL
     ;
 
 // Namespace Declaration
@@ -35,7 +35,7 @@ topLevelDecl
 
 // Extern Declaration
 externDecl
-    : EXTERN NAMESPACE IDENTIFIER LBRACE externMember* RBRACE
+    : EXTERN IDENTIFIER LBRACE externMember* RBRACE
     ;
 
 externMember
@@ -43,7 +43,7 @@ externMember
     ;
 
 externFunctionDecl
-    : FUNC IDENTIFIER (STRING_LITERAL)? LPAREN externParameterList? RPAREN type?
+    : FUNC IDENTIFIER LPAREN externParameterList? RPAREN type?
     ;
 
 // Extern parameters are type-only (no names required)
@@ -63,7 +63,7 @@ parameterList
     ;
 
 parameter
-    : SELF? IDENTIFIER COLON type
+    : IDENTIFIER COLON type
     ;
 
 // Struct Declaration
@@ -100,7 +100,7 @@ primitiveType
     | UINT8 | UINT16 | UINT32 | UINT64
     | USIZE | ISIZE
     | FLOAT32 | FLOAT64
-    | BYTE | BOOL | RUNE
+    | BYTE | BOOL | CHAR
     | STRING
     | VOID
     ;
@@ -160,7 +160,7 @@ ifStmt
     ;
 
 deferStmt
-    : DEFER expression
+    : DEFER (assignmentStmt | expression)
     ;
 
 // Expressions (with proper precedence, lowest to highest)

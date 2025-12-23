@@ -29,7 +29,7 @@ FLOAT32: 'float32';
 FLOAT64: 'float64';
 BYTE: 'byte';
 BOOL: 'bool';
-RUNE: 'rune';
+CHAR: 'char';
 STRING: 'string';
 VOID: 'void';
 VECTOR: 'vector';
@@ -119,11 +119,6 @@ fragment HEX_DIGIT: [0-9a-fA-F];
 // Identifiers
 IDENTIFIER
     : [a-zA-Z_] [a-zA-Z0-9_]*
-    ;
-
-// Import Path
-IMPORT_PATH
-    : '"' (~["\r\n])* '"'
     ;
 
 // Whitespace and Comments
