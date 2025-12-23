@@ -188,7 +188,7 @@ func test_method_declaration() string {
     port: int32
 }
 
-func Connect(self: *Client, host: string) bool {
+func Connect(self c: *Client, host: string) bool {
     return true
 }`
 }

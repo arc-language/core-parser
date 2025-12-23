@@ -2,5 +2,7 @@ github.com/antlr4-go/antlr/v4 v4.13.1 h1:SqQKkuVZ+zWkMMNkjy5FZe5mr5WURWnlpmOuzYW
 github.com/antlr4-go/antlr/v4 v4.13.1/go.mod h1:GKmUxMtwp6ZgGwZSva4eWPC5mS6vUAmOABFgjdkM7Nw=
 github.com/arc-language/core-parser v0.0.0-20251223202112-6406438b72ab h1:okFVpEQLKY9ofcQcbRRClbVDMkFTVu2NXud+E8KtURE=
 github.com/arc-language/core-parser v0.0.0-20251223202112-6406438b72ab/go.mod h1:BLt/5INiwrJOd15QBGG6nUVA8CFJLyeU1+de32mJ9S4=
+github.com/arc-language/core-parser v0.0.0-20251223203947-7410926c7ca1 h1:fEvitPb3tQp42rTNZmWoEKyu6gysxtaGVSiKrIPgFYI=
+github.com/arc-language/core-parser v0.0.0-20251223203947-7410926c7ca1/go.mod h1:BLt/5INiwrJOd15QBGG6nUVA8CFJLyeU1+de32mJ9S4=
 golang.org/x/exp v0.0.0-20240506185415-9bf2ced13842 h1:vr/HnozRka3pE4EsMEg1lgkXJkTFJCVUX+S/ZT6wYzM=
 golang.org/x/exp v0.0.0-20240506185415-9bf2ced13842/go.mod h1:XtvwrStGgqGPLc4cjQfWqZHG1YFdYs6swckp8vpsjnc=

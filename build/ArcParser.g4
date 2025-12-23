@@ -63,7 +63,7 @@ parameterList
     ;
 
 parameter
-    : IDENTIFIER COLON type
+    : SELF? IDENTIFIER COLON type
     ;
 
 // Struct Declaration
