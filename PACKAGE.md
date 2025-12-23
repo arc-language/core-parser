@@ -1,6 +1,4 @@
 
-This is the paser package
-package github.com/arc-language/core-parser
 
 CONSTANTS
 
@@ -31,7 +29,7 @@ const (
 	ArcLexerFLOAT64         = 24
 	ArcLexerBYTE            = 25
 	ArcLexerBOOL            = 26
-	ArcLexerRUNE            = 27
+	ArcLexerCHAR            = 27
 	ArcLexerSTRING          = 28
 	ArcLexerVOID            = 29
 	ArcLexerVECTOR          = 30
@@ -73,10 +71,9 @@ const (
 	ArcLexerSTRING_LITERAL  = 66
 	ArcLexerCHAR_LITERAL    = 67
 	ArcLexerIDENTIFIER      = 68
-	ArcLexerIMPORT_PATH     = 69
-	ArcLexerWS              = 70
-	ArcLexerLINE_COMMENT    = 71
-	ArcLexerBLOCK_COMMENT   = 72
+	ArcLexerWS              = 69
+	ArcLexerLINE_COMMENT    = 70
+	ArcLexerBLOCK_COMMENT   = 71
 )
     ArcLexer tokens.
 
@@ -108,7 +105,7 @@ const (
 	ArcParserFLOAT64         = 24
 	ArcParserBYTE            = 25
 	ArcParserBOOL            = 26
-	ArcParserRUNE            = 27
+	ArcParserCHAR            = 27
 	ArcParserSTRING          = 28
 	ArcParserVOID            = 29
 	ArcParserVECTOR          = 30
@@ -150,10 +147,9 @@ const (
 	ArcParserSTRING_LITERAL  = 66
 	ArcParserCHAR_LITERAL    = 67
 	ArcParserIDENTIFIER      = 68
-	ArcParserIMPORT_PATH     = 69
-	ArcParserWS              = 70
-	ArcParserLINE_COMMENT    = 71
-	ArcParserBLOCK_COMMENT   = 72
+	ArcParserWS              = 69
+	ArcParserLINE_COMMENT    = 70
+	ArcParserBLOCK_COMMENT   = 71
 )
     ArcParser tokens.
 
@@ -1602,6 +1598,8 @@ func NewEmptyDeferStmtContext() *DeferStmtContext
 
 func (s *DeferStmtContext) Accept(visitor antlr.ParseTreeVisitor) interface{}
 
+func (s *DeferStmtContext) AssignmentStmt() IAssignmentStmtContext
+
 func (s *DeferStmtContext) DEFER() antlr.TerminalNode
 
 func (s *DeferStmtContext) EnterRule(listener antlr.ParseTreeListener)
@@ -1734,8 +1732,6 @@ func (*ExternDeclContext) IsExternDeclContext()
 
 func (s *ExternDeclContext) LBRACE() antlr.TerminalNode
 
-func (s *ExternDeclContext) NAMESPACE() antlr.TerminalNode
-
 func (s *ExternDeclContext) RBRACE() antlr.TerminalNode
 
 func (s *ExternDeclContext) ToStringTree(ruleNames []string, recog antlr.Recognizer) string
@@ -1770,8 +1766,6 @@ func (*ExternFunctionDeclContext) IsExternFunctionDeclContext()
 func (s *ExternFunctionDeclContext) LPAREN() antlr.TerminalNode
 
 func (s *ExternFunctionDeclContext) RPAREN() antlr.TerminalNode
-
-func (s *ExternFunctionDeclContext) STRING_LITERAL() antlr.TerminalNode
 
 func (s *ExternFunctionDeclContext) ToStringTree(ruleNames []string, recog antlr.Recognizer) string
 
@@ -2056,6 +2050,7 @@ type IDeferStmtContext interface {
 
 	// Getter signatures
 	DEFER() antlr.TerminalNode
+	AssignmentStmt() IAssignmentStmtContext
 	Expression() IExpressionContext
 
 	// IsDeferStmtContext differentiates from other interfaces.
@@ -2118,7 +2113,6 @@ type IExternDeclContext interface {
 
 	// Getter signatures
 	EXTERN() antlr.TerminalNode
-	NAMESPACE() antlr.TerminalNode
 	IDENTIFIER() antlr.TerminalNode
 	LBRACE() antlr.TerminalNode
 	RBRACE() antlr.TerminalNode
@@ -2141,7 +2135,6 @@ type IExternFunctionDeclContext interface {
 	IDENTIFIER() antlr.TerminalNode
 	LPAREN() antlr.TerminalNode
 	RPAREN() antlr.TerminalNode
-	STRING_LITERAL() antlr.TerminalNode
 	ExternParameterList() IExternParameterListContext
 	Type_() ITypeContext
 
@@ -2247,7 +2240,7 @@ type IImportDeclContext interface {
 
 	// Getter signatures
 	IMPORT() antlr.TerminalNode
-	IMPORT_PATH() antlr.TerminalNode
+	STRING_LITERAL() antlr.TerminalNode
 	LPAREN() antlr.TerminalNode
 	RPAREN() antlr.TerminalNode
 	AllImportSpec() []IImportSpecContext
@@ -2265,7 +2258,7 @@ type IImportSpecContext interface {
 	GetParser() antlr.Parser
 
 	// Getter signatures
-	IMPORT_PATH() antlr.TerminalNode
+	STRING_LITERAL() antlr.TerminalNode
 
 	// IsImportSpecContext differentiates from other interfaces.
 	IsImportSpecContext()
@@ -2560,7 +2553,7 @@ type IPrimitiveTypeContext interface {
 	FLOAT64() antlr.TerminalNode
 	BYTE() antlr.TerminalNode
 	BOOL() antlr.TerminalNode
-	RUNE() antlr.TerminalNode
+	CHAR() antlr.TerminalNode
 	STRING() antlr.TerminalNode
 	VOID() antlr.TerminalNode
 
@@ -2871,8 +2864,6 @@ func (s *ImportDeclContext) GetRuleContext() antlr.RuleContext
 
 func (s *ImportDeclContext) IMPORT() antlr.TerminalNode
 
-func (s *ImportDeclContext) IMPORT_PATH() antlr.TerminalNode
-
 func (s *ImportDeclContext) ImportSpec(i int) IImportSpecContext
 
 func (*ImportDeclContext) IsImportDeclContext()
@@ -2880,6 +2871,8 @@ func (*ImportDeclContext) IsImportDeclContext()
 func (s *ImportDeclContext) LPAREN() antlr.TerminalNode
 
 func (s *ImportDeclContext) RPAREN() antlr.TerminalNode
+
+func (s *ImportDeclContext) STRING_LITERAL() antlr.TerminalNode
 
 func (s *ImportDeclContext) ToStringTree(ruleNames []string, recog antlr.Recognizer) string
 
@@ -2902,9 +2895,9 @@ func (s *ImportSpecContext) GetParser() antlr.Parser
 
 func (s *ImportSpecContext) GetRuleContext() antlr.RuleContext
 
-func (s *ImportSpecContext) IMPORT_PATH() antlr.TerminalNode
-
 func (*ImportSpecContext) IsImportSpecContext()
+
+func (s *ImportSpecContext) STRING_LITERAL() antlr.TerminalNode
 
 func (s *ImportSpecContext) ToStringTree(ruleNames []string, recog antlr.Recognizer) string
 
@@ -3410,6 +3403,8 @@ func (s *PrimitiveTypeContext) BOOL() antlr.TerminalNode
 
 func (s *PrimitiveTypeContext) BYTE() antlr.TerminalNode
 
+func (s *PrimitiveTypeContext) CHAR() antlr.TerminalNode
+
 func (s *PrimitiveTypeContext) EnterRule(listener antlr.ParseTreeListener)
 
 func (s *PrimitiveTypeContext) ExitRule(listener antlr.ParseTreeListener)
@@ -3433,8 +3428,6 @@ func (s *PrimitiveTypeContext) INT8() antlr.TerminalNode
 func (s *PrimitiveTypeContext) ISIZE() antlr.TerminalNode
 
 func (*PrimitiveTypeContext) IsPrimitiveTypeContext()
-
-func (s *PrimitiveTypeContext) RUNE() antlr.TerminalNode
 
 func (s *PrimitiveTypeContext) STRING() antlr.TerminalNode
 
