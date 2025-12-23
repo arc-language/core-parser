@@ -168,6 +168,12 @@ func test_function_no_return() string {
 }`
 }
 
+func test_function_void_return() string {
+	return `func main() {
+    let x = 42
+}`
+}
+
 func test_struct_declaration() string {
 	return `struct Point {
     x: int32
@@ -389,6 +395,7 @@ func main() {
 		{"Map Type", test_map_type},
 		{"Function Basic", test_function_basic},
 		{"Function No Return", test_function_no_return},
+		{"Function Void Return", test_function_void_return},
 		{"Struct Declaration", test_struct_declaration},
 		{"Struct Literal", test_struct_literal},
 		{"Struct Field Access", test_struct_field_access},
