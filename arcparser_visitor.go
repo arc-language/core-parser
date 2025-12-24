@@ -95,6 +95,15 @@ type ArcParserVisitor interface {
 	// Visit a parse tree produced by ArcParser#ifStmt.
 	VisitIfStmt(ctx *IfStmtContext) interface{}
 
+	// Visit a parse tree produced by ArcParser#forStmt.
+	VisitForStmt(ctx *ForStmtContext) interface{}
+
+	// Visit a parse tree produced by ArcParser#breakStmt.
+	VisitBreakStmt(ctx *BreakStmtContext) interface{}
+
+	// Visit a parse tree produced by ArcParser#continueStmt.
+	VisitContinueStmt(ctx *ContinueStmtContext) interface{}
+
 	// Visit a parse tree produced by ArcParser#deferStmt.
 	VisitDeferStmt(ctx *DeferStmtContext) interface{}
 

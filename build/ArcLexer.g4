@@ -10,6 +10,9 @@ STRUCT: 'struct';
 RETURN: 'return';
 IF: 'if';
 ELSE: 'else';
+FOR: 'for';         // <--- NEW
+BREAK: 'break';     // <--- NEW
+CONTINUE: 'continue'; // <--- NEW
 DEFER: 'defer';
 EXTERN: 'extern';
 SELF: 'self';

@@ -133,6 +133,9 @@ statement
     | expressionStmt
     | returnStmt
     | ifStmt
+    | forStmt         // <--- NEW
+    | breakStmt       // <--- NEW
+    | continueStmt    // <--- NEW
     | deferStmt
     | block
     ;
@@ -155,8 +158,27 @@ returnStmt
     : RETURN expression?
     ;
 
+// Control Flow
 ifStmt
     : IF expression block (ELSE IF expression block)* (ELSE block)?
+    ;
+
+// Modern For Loop
+// 1. Infinite: for { }
+// 2. Condition: for x < 10 { }
+// 3. Clause: for let i=0; i<10; i=i+1 { }
+forStmt
+    : FOR block
+    | FOR expression block
+    | FOR (variableDecl | assignmentStmt)? SEMICOLON expression? SEMICOLON (assignmentStmt | expression)? block
+    ;
+
+breakStmt
+    : BREAK
+    ;
+
+continueStmt
+    : CONTINUE
     ;
 
 deferStmt

@@ -95,6 +95,15 @@ type ArcParserListener interface {
 	// EnterIfStmt is called when entering the ifStmt production.
 	EnterIfStmt(c *IfStmtContext)
 
+	// EnterForStmt is called when entering the forStmt production.
+	EnterForStmt(c *ForStmtContext)
+
+	// EnterBreakStmt is called when entering the breakStmt production.
+	EnterBreakStmt(c *BreakStmtContext)
+
+	// EnterContinueStmt is called when entering the continueStmt production.
+	EnterContinueStmt(c *ContinueStmtContext)
+
 	// EnterDeferStmt is called when entering the deferStmt production.
 	EnterDeferStmt(c *DeferStmtContext)
 
@@ -244,6 +253,15 @@ type ArcParserListener interface {
 
 	// ExitIfStmt is called when exiting the ifStmt production.
 	ExitIfStmt(c *IfStmtContext)
+
+	// ExitForStmt is called when exiting the forStmt production.
+	ExitForStmt(c *ForStmtContext)
+
+	// ExitBreakStmt is called when exiting the breakStmt production.
+	ExitBreakStmt(c *BreakStmtContext)
+
+	// ExitContinueStmt is called when exiting the continueStmt production.
+	ExitContinueStmt(c *ContinueStmtContext)
 
 	// ExitDeferStmt is called when exiting the deferStmt production.
 	ExitDeferStmt(c *DeferStmtContext)

@@ -195,6 +195,24 @@ func (s *BaseArcParserListener) EnterIfStmt(ctx *IfStmtContext) {}
 // ExitIfStmt is called when production ifStmt is exited.
 func (s *BaseArcParserListener) ExitIfStmt(ctx *IfStmtContext) {}
 
+// EnterForStmt is called when production forStmt is entered.
+func (s *BaseArcParserListener) EnterForStmt(ctx *ForStmtContext) {}
+
+// ExitForStmt is called when production forStmt is exited.
+func (s *BaseArcParserListener) ExitForStmt(ctx *ForStmtContext) {}
+
+// EnterBreakStmt is called when production breakStmt is entered.
+func (s *BaseArcParserListener) EnterBreakStmt(ctx *BreakStmtContext) {}
+
+// ExitBreakStmt is called when production breakStmt is exited.
+func (s *BaseArcParserListener) ExitBreakStmt(ctx *BreakStmtContext) {}
+
+// EnterContinueStmt is called when production continueStmt is entered.
+func (s *BaseArcParserListener) EnterContinueStmt(ctx *ContinueStmtContext) {}
+
+// ExitContinueStmt is called when production continueStmt is exited.
+func (s *BaseArcParserListener) ExitContinueStmt(ctx *ContinueStmtContext) {}
+
 // EnterDeferStmt is called when production deferStmt is entered.
 func (s *BaseArcParserListener) EnterDeferStmt(ctx *DeferStmtContext) {}
 

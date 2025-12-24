@@ -12,68 +12,71 @@ const (
 	ArcLexerRETURN          = 7
 	ArcLexerIF              = 8
 	ArcLexerELSE            = 9
-	ArcLexerDEFER           = 10
-	ArcLexerEXTERN          = 11
-	ArcLexerSELF            = 12
-	ArcLexerINT8            = 13
-	ArcLexerINT16           = 14
-	ArcLexerINT32           = 15
-	ArcLexerINT64           = 16
-	ArcLexerUINT8           = 17
-	ArcLexerUINT16          = 18
-	ArcLexerUINT32          = 19
-	ArcLexerUINT64          = 20
-	ArcLexerUSIZE           = 21
-	ArcLexerISIZE           = 22
-	ArcLexerFLOAT32         = 23
-	ArcLexerFLOAT64         = 24
-	ArcLexerBYTE            = 25
-	ArcLexerBOOL            = 26
-	ArcLexerCHAR            = 27
-	ArcLexerSTRING          = 28
-	ArcLexerVOID            = 29
-	ArcLexerVECTOR          = 30
-	ArcLexerMAP             = 31
-	ArcLexerALLOCA          = 32
-	ArcLexerCAST            = 33
-	ArcLexerPLUS            = 34
-	ArcLexerMINUS           = 35
-	ArcLexerSTAR            = 36
-	ArcLexerSLASH           = 37
-	ArcLexerPERCENT         = 38
-	ArcLexerEQ              = 39
-	ArcLexerNE              = 40
-	ArcLexerLT              = 41
-	ArcLexerLE              = 42
-	ArcLexerGT              = 43
-	ArcLexerGE              = 44
-	ArcLexerAND             = 45
-	ArcLexerOR              = 46
-	ArcLexerNOT             = 47
-	ArcLexerAMP             = 48
-	ArcLexerAT              = 49
-	ArcLexerASSIGN          = 50
-	ArcLexerARROW           = 51
-	ArcLexerLPAREN          = 52
-	ArcLexerRPAREN          = 53
-	ArcLexerLBRACE          = 54
-	ArcLexerRBRACE          = 55
-	ArcLexerLBRACKET        = 56
-	ArcLexerRBRACKET        = 57
-	ArcLexerCOMMA           = 58
-	ArcLexerCOLON           = 59
-	ArcLexerSEMICOLON       = 60
-	ArcLexerDOT             = 61
-	ArcLexerELLIPSIS        = 62
-	ArcLexerBOOLEAN_LITERAL = 63
-	ArcLexerINTEGER_LITERAL = 64
-	ArcLexerFLOAT_LITERAL   = 65
-	ArcLexerSTRING_LITERAL  = 66
-	ArcLexerCHAR_LITERAL    = 67
-	ArcLexerIDENTIFIER      = 68
-	ArcLexerWS              = 69
-	ArcLexerLINE_COMMENT    = 70
-	ArcLexerBLOCK_COMMENT   = 71
+	ArcLexerFOR             = 10
+	ArcLexerBREAK           = 11
+	ArcLexerCONTINUE        = 12
+	ArcLexerDEFER           = 13
+	ArcLexerEXTERN          = 14
+	ArcLexerSELF            = 15
+	ArcLexerINT8            = 16
+	ArcLexerINT16           = 17
+	ArcLexerINT32           = 18
+	ArcLexerINT64           = 19
+	ArcLexerUINT8           = 20
+	ArcLexerUINT16          = 21
+	ArcLexerUINT32          = 22
+	ArcLexerUINT64          = 23
+	ArcLexerUSIZE           = 24
+	ArcLexerISIZE           = 25
+	ArcLexerFLOAT32         = 26
+	ArcLexerFLOAT64         = 27
+	ArcLexerBYTE            = 28
+	ArcLexerBOOL            = 29
+	ArcLexerCHAR            = 30
+	ArcLexerSTRING          = 31
+	ArcLexerVOID            = 32
+	ArcLexerVECTOR          = 33
+	ArcLexerMAP             = 34
+	ArcLexerALLOCA          = 35
+	ArcLexerCAST            = 36
+	ArcLexerPLUS            = 37
+	ArcLexerMINUS           = 38
+	ArcLexerSTAR            = 39
+	ArcLexerSLASH           = 40
+	ArcLexerPERCENT         = 41
+	ArcLexerEQ              = 42
+	ArcLexerNE              = 43
+	ArcLexerLT              = 44
+	ArcLexerLE              = 45
+	ArcLexerGT              = 46
+	ArcLexerGE              = 47
+	ArcLexerAND             = 48
+	ArcLexerOR              = 49
+	ArcLexerNOT             = 50
+	ArcLexerAMP             = 51
+	ArcLexerAT              = 52
+	ArcLexerASSIGN          = 53
+	ArcLexerARROW           = 54
+	ArcLexerLPAREN          = 55
+	ArcLexerRPAREN          = 56
+	ArcLexerLBRACE          = 57
+	ArcLexerRBRACE          = 58
+	ArcLexerLBRACKET        = 59
+	ArcLexerRBRACKET        = 60
+	ArcLexerCOMMA           = 61
+	ArcLexerCOLON           = 62
+	ArcLexerSEMICOLON       = 63
+	ArcLexerDOT             = 64
+	ArcLexerELLIPSIS        = 65
+	ArcLexerBOOLEAN_LITERAL = 66
+	ArcLexerINTEGER_LITERAL = 67
+	ArcLexerFLOAT_LITERAL   = 68
+	ArcLexerSTRING_LITERAL  = 69
+	ArcLexerCHAR_LITERAL    = 70
+	ArcLexerIDENTIFIER      = 71
+	ArcLexerWS              = 72
+	ArcLexerLINE_COMMENT    = 73
+	ArcLexerBLOCK_COMMENT   = 74
 )
     ArcLexer tokens.
 
@@ -88,68 +91,71 @@ const (
 	ArcParserRETURN          = 7
 	ArcParserIF              = 8
 	ArcParserELSE            = 9
-	ArcParserDEFER           = 10
-	ArcParserEXTERN          = 11
-	ArcParserSELF            = 12
-	ArcParserINT8            = 13
-	ArcParserINT16           = 14
-	ArcParserINT32           = 15
-	ArcParserINT64           = 16
-	ArcParserUINT8           = 17
-	ArcParserUINT16          = 18
-	ArcParserUINT32          = 19
-	ArcParserUINT64          = 20
-	ArcParserUSIZE           = 21
-	ArcParserISIZE           = 22
-	ArcParserFLOAT32         = 23
-	ArcParserFLOAT64         = 24
-	ArcParserBYTE            = 25
-	ArcParserBOOL            = 26
-	ArcParserCHAR            = 27
-	ArcParserSTRING          = 28
-	ArcParserVOID            = 29
-	ArcParserVECTOR          = 30
-	ArcParserMAP             = 31
-	ArcParserALLOCA          = 32
-	ArcParserCAST            = 33
-	ArcParserPLUS            = 34
-	ArcParserMINUS           = 35
-	ArcParserSTAR            = 36
-	ArcParserSLASH           = 37
-	ArcParserPERCENT         = 38
-	ArcParserEQ              = 39
-	ArcParserNE              = 40
-	ArcParserLT              = 41
-	ArcParserLE              = 42
-	ArcParserGT              = 43
-	ArcParserGE              = 44
-	ArcParserAND             = 45
-	ArcParserOR              = 46
-	ArcParserNOT             = 47
-	ArcParserAMP             = 48
-	ArcParserAT              = 49
-	ArcParserASSIGN          = 50
-	ArcParserARROW           = 51
-	ArcParserLPAREN          = 52
-	ArcParserRPAREN          = 53
-	ArcParserLBRACE          = 54
-	ArcParserRBRACE          = 55
-	ArcParserLBRACKET        = 56
-	ArcParserRBRACKET        = 57
-	ArcParserCOMMA           = 58
-	ArcParserCOLON           = 59
-	ArcParserSEMICOLON       = 60
-	ArcParserDOT             = 61
-	ArcParserELLIPSIS        = 62
-	ArcParserBOOLEAN_LITERAL = 63
-	ArcParserINTEGER_LITERAL = 64
-	ArcParserFLOAT_LITERAL   = 65
-	ArcParserSTRING_LITERAL  = 66
-	ArcParserCHAR_LITERAL    = 67
-	ArcParserIDENTIFIER      = 68
-	ArcParserWS              = 69
-	ArcParserLINE_COMMENT    = 70
-	ArcParserBLOCK_COMMENT   = 71
+	ArcParserFOR             = 10
+	ArcParserBREAK           = 11
+	ArcParserCONTINUE        = 12
+	ArcParserDEFER           = 13
+	ArcParserEXTERN          = 14
+	ArcParserSELF            = 15
+	ArcParserINT8            = 16
+	ArcParserINT16           = 17
+	ArcParserINT32           = 18
+	ArcParserINT64           = 19
+	ArcParserUINT8           = 20
+	ArcParserUINT16          = 21
+	ArcParserUINT32          = 22
+	ArcParserUINT64          = 23
+	ArcParserUSIZE           = 24
+	ArcParserISIZE           = 25
+	ArcParserFLOAT32         = 26
+	ArcParserFLOAT64         = 27
+	ArcParserBYTE            = 28
+	ArcParserBOOL            = 29
+	ArcParserCHAR            = 30
+	ArcParserSTRING          = 31
+	ArcParserVOID            = 32
+	ArcParserVECTOR          = 33
+	ArcParserMAP             = 34
+	ArcParserALLOCA          = 35
+	ArcParserCAST            = 36
+	ArcParserPLUS            = 37
+	ArcParserMINUS           = 38
+	ArcParserSTAR            = 39
+	ArcParserSLASH           = 40
+	ArcParserPERCENT         = 41
+	ArcParserEQ              = 42
+	ArcParserNE              = 43
+	ArcParserLT              = 44
+	ArcParserLE              = 45
+	ArcParserGT              = 46
+	ArcParserGE              = 47
+	ArcParserAND             = 48
+	ArcParserOR              = 49
+	ArcParserNOT             = 50
+	ArcParserAMP             = 51
+	ArcParserAT              = 52
+	ArcParserASSIGN          = 53
+	ArcParserARROW           = 54
+	ArcParserLPAREN          = 55
+	ArcParserRPAREN          = 56
+	ArcParserLBRACE          = 57
+	ArcParserRBRACE          = 58
+	ArcParserLBRACKET        = 59
+	ArcParserRBRACKET        = 60
+	ArcParserCOMMA           = 61
+	ArcParserCOLON           = 62
+	ArcParserSEMICOLON       = 63
+	ArcParserDOT             = 64
+	ArcParserELLIPSIS        = 65
+	ArcParserBOOLEAN_LITERAL = 66
+	ArcParserINTEGER_LITERAL = 67
+	ArcParserFLOAT_LITERAL   = 68
+	ArcParserSTRING_LITERAL  = 69
+	ArcParserCHAR_LITERAL    = 70
+	ArcParserIDENTIFIER      = 71
+	ArcParserWS              = 72
+	ArcParserLINE_COMMENT    = 73
+	ArcParserBLOCK_COMMENT   = 74
 )
     ArcParser tokens.
 
@@ -183,27 +189,30 @@ const (
 	ArcParserRULE_expressionStmt           = 26
 	ArcParserRULE_returnStmt               = 27
 	ArcParserRULE_ifStmt                   = 28
-	ArcParserRULE_deferStmt                = 29
-	ArcParserRULE_expression               = 30
-	ArcParserRULE_logicalOrExpression      = 31
-	ArcParserRULE_logicalAndExpression     = 32
-	ArcParserRULE_equalityExpression       = 33
-	ArcParserRULE_relationalExpression     = 34
-	ArcParserRULE_additiveExpression       = 35
-	ArcParserRULE_multiplicativeExpression = 36
-	ArcParserRULE_unaryExpression          = 37
-	ArcParserRULE_postfixExpression        = 38
-	ArcParserRULE_postfixOp                = 39
-	ArcParserRULE_primaryExpression        = 40
-	ArcParserRULE_literal                  = 41
-	ArcParserRULE_vectorLiteral            = 42
-	ArcParserRULE_mapLiteral               = 43
-	ArcParserRULE_mapEntry                 = 44
-	ArcParserRULE_structLiteral            = 45
-	ArcParserRULE_fieldInit                = 46
-	ArcParserRULE_argumentList             = 47
-	ArcParserRULE_castExpression           = 48
-	ArcParserRULE_allocaExpression         = 49
+	ArcParserRULE_forStmt                  = 29
+	ArcParserRULE_breakStmt                = 30
+	ArcParserRULE_continueStmt             = 31
+	ArcParserRULE_deferStmt                = 32
+	ArcParserRULE_expression               = 33
+	ArcParserRULE_logicalOrExpression      = 34
+	ArcParserRULE_logicalAndExpression     = 35
+	ArcParserRULE_equalityExpression       = 36
+	ArcParserRULE_relationalExpression     = 37
+	ArcParserRULE_additiveExpression       = 38
+	ArcParserRULE_multiplicativeExpression = 39
+	ArcParserRULE_unaryExpression          = 40
+	ArcParserRULE_postfixExpression        = 41
+	ArcParserRULE_postfixOp                = 42
+	ArcParserRULE_primaryExpression        = 43
+	ArcParserRULE_literal                  = 44
+	ArcParserRULE_vectorLiteral            = 45
+	ArcParserRULE_mapLiteral               = 46
+	ArcParserRULE_mapEntry                 = 47
+	ArcParserRULE_structLiteral            = 48
+	ArcParserRULE_fieldInit                = 49
+	ArcParserRULE_argumentList             = 50
+	ArcParserRULE_castExpression           = 51
+	ArcParserRULE_allocaExpression         = 52
 )
     ArcParser rules.
 
@@ -252,9 +261,11 @@ func InitEmptyAllocaExpressionContext(p *AllocaExpressionContext)
 func InitEmptyArgumentListContext(p *ArgumentListContext)
 func InitEmptyAssignmentStmtContext(p *AssignmentStmtContext)
 func InitEmptyBlockContext(p *BlockContext)
+func InitEmptyBreakStmtContext(p *BreakStmtContext)
 func InitEmptyCastExpressionContext(p *CastExpressionContext)
 func InitEmptyCompilationUnitContext(p *CompilationUnitContext)
 func InitEmptyConstDeclContext(p *ConstDeclContext)
+func InitEmptyContinueStmtContext(p *ContinueStmtContext)
 func InitEmptyDeferStmtContext(p *DeferStmtContext)
 func InitEmptyEqualityExpressionContext(p *EqualityExpressionContext)
 func InitEmptyExpressionContext(p *ExpressionContext)
@@ -264,6 +275,7 @@ func InitEmptyExternFunctionDeclContext(p *ExternFunctionDeclContext)
 func InitEmptyExternMemberContext(p *ExternMemberContext)
 func InitEmptyExternParameterListContext(p *ExternParameterListContext)
 func InitEmptyFieldInitContext(p *FieldInitContext)
+func InitEmptyForStmtContext(p *ForStmtContext)
 func InitEmptyFunctionDeclContext(p *FunctionDeclContext)
 func InitEmptyIfStmtContext(p *IfStmtContext)
 func InitEmptyImportDeclContext(p *ImportDeclContext)
@@ -398,11 +410,15 @@ func (p *ArcParser) AssignmentStmt() (localctx IAssignmentStmtContext)
 
 func (p *ArcParser) Block() (localctx IBlockContext)
 
+func (p *ArcParser) BreakStmt() (localctx IBreakStmtContext)
+
 func (p *ArcParser) CastExpression() (localctx ICastExpressionContext)
 
 func (p *ArcParser) CompilationUnit() (localctx ICompilationUnitContext)
 
 func (p *ArcParser) ConstDecl() (localctx IConstDeclContext)
+
+func (p *ArcParser) ContinueStmt() (localctx IContinueStmtContext)
 
 func (p *ArcParser) DeferStmt() (localctx IDeferStmtContext)
 
@@ -421,6 +437,8 @@ func (p *ArcParser) ExternMember() (localctx IExternMemberContext)
 func (p *ArcParser) ExternParameterList() (localctx IExternParameterListContext)
 
 func (p *ArcParser) FieldInit() (localctx IFieldInitContext)
+
+func (p *ArcParser) ForStmt() (localctx IForStmtContext)
 
 func (p *ArcParser) FunctionDecl() (localctx IFunctionDeclContext)
 
@@ -578,6 +596,15 @@ type ArcParserListener interface {
 	// EnterIfStmt is called when entering the ifStmt production.
 	EnterIfStmt(c *IfStmtContext)
 
+	// EnterForStmt is called when entering the forStmt production.
+	EnterForStmt(c *ForStmtContext)
+
+	// EnterBreakStmt is called when entering the breakStmt production.
+	EnterBreakStmt(c *BreakStmtContext)
+
+	// EnterContinueStmt is called when entering the continueStmt production.
+	EnterContinueStmt(c *ContinueStmtContext)
+
 	// EnterDeferStmt is called when entering the deferStmt production.
 	EnterDeferStmt(c *DeferStmtContext)
 
@@ -727,6 +754,15 @@ type ArcParserListener interface {
 
 	// ExitIfStmt is called when exiting the ifStmt production.
 	ExitIfStmt(c *IfStmtContext)
+
+	// ExitForStmt is called when exiting the forStmt production.
+	ExitForStmt(c *ForStmtContext)
+
+	// ExitBreakStmt is called when exiting the breakStmt production.
+	ExitBreakStmt(c *BreakStmtContext)
+
+	// ExitContinueStmt is called when exiting the continueStmt production.
+	ExitContinueStmt(c *ContinueStmtContext)
 
 	// ExitDeferStmt is called when exiting the deferStmt production.
 	ExitDeferStmt(c *DeferStmtContext)
@@ -884,6 +920,15 @@ type ArcParserVisitor interface {
 	// Visit a parse tree produced by ArcParser#ifStmt.
 	VisitIfStmt(ctx *IfStmtContext) interface{}
 
+	// Visit a parse tree produced by ArcParser#forStmt.
+	VisitForStmt(ctx *ForStmtContext) interface{}
+
+	// Visit a parse tree produced by ArcParser#breakStmt.
+	VisitBreakStmt(ctx *BreakStmtContext) interface{}
+
+	// Visit a parse tree produced by ArcParser#continueStmt.
+	VisitContinueStmt(ctx *ContinueStmtContext) interface{}
+
 	// Visit a parse tree produced by ArcParser#deferStmt.
 	VisitDeferStmt(ctx *DeferStmtContext) interface{}
 
@@ -1029,6 +1074,9 @@ func (s *BaseArcParserListener) EnterAssignmentStmt(ctx *AssignmentStmtContext)
 func (s *BaseArcParserListener) EnterBlock(ctx *BlockContext)
     EnterBlock is called when production block is entered.
 
+func (s *BaseArcParserListener) EnterBreakStmt(ctx *BreakStmtContext)
+    EnterBreakStmt is called when production breakStmt is entered.
+
 func (s *BaseArcParserListener) EnterCastExpression(ctx *CastExpressionContext)
     EnterCastExpression is called when production castExpression is entered.
 
@@ -1037,6 +1085,9 @@ func (s *BaseArcParserListener) EnterCompilationUnit(ctx *CompilationUnitContext
 
 func (s *BaseArcParserListener) EnterConstDecl(ctx *ConstDeclContext)
     EnterConstDecl is called when production constDecl is entered.
+
+func (s *BaseArcParserListener) EnterContinueStmt(ctx *ContinueStmtContext)
+    EnterContinueStmt is called when production continueStmt is entered.
 
 func (s *BaseArcParserListener) EnterDeferStmt(ctx *DeferStmtContext)
     EnterDeferStmt is called when production deferStmt is entered.
@@ -1070,6 +1121,9 @@ func (s *BaseArcParserListener) EnterExternParameterList(ctx *ExternParameterLis
 
 func (s *BaseArcParserListener) EnterFieldInit(ctx *FieldInitContext)
     EnterFieldInit is called when production fieldInit is entered.
+
+func (s *BaseArcParserListener) EnterForStmt(ctx *ForStmtContext)
+    EnterForStmt is called when production forStmt is entered.
 
 func (s *BaseArcParserListener) EnterFunctionDecl(ctx *FunctionDeclContext)
     EnterFunctionDecl is called when production functionDecl is entered.
@@ -1192,6 +1246,9 @@ func (s *BaseArcParserListener) ExitAssignmentStmt(ctx *AssignmentStmtContext)
 func (s *BaseArcParserListener) ExitBlock(ctx *BlockContext)
     ExitBlock is called when production block is exited.
 
+func (s *BaseArcParserListener) ExitBreakStmt(ctx *BreakStmtContext)
+    ExitBreakStmt is called when production breakStmt is exited.
+
 func (s *BaseArcParserListener) ExitCastExpression(ctx *CastExpressionContext)
     ExitCastExpression is called when production castExpression is exited.
 
@@ -1200,6 +1257,9 @@ func (s *BaseArcParserListener) ExitCompilationUnit(ctx *CompilationUnitContext)
 
 func (s *BaseArcParserListener) ExitConstDecl(ctx *ConstDeclContext)
     ExitConstDecl is called when production constDecl is exited.
+
+func (s *BaseArcParserListener) ExitContinueStmt(ctx *ContinueStmtContext)
+    ExitContinueStmt is called when production continueStmt is exited.
 
 func (s *BaseArcParserListener) ExitDeferStmt(ctx *DeferStmtContext)
     ExitDeferStmt is called when production deferStmt is exited.
@@ -1233,6 +1293,9 @@ func (s *BaseArcParserListener) ExitExternParameterList(ctx *ExternParameterList
 
 func (s *BaseArcParserListener) ExitFieldInit(ctx *FieldInitContext)
     ExitFieldInit is called when production fieldInit is exited.
+
+func (s *BaseArcParserListener) ExitForStmt(ctx *ForStmtContext)
+    ExitForStmt is called when production forStmt is exited.
 
 func (s *BaseArcParserListener) ExitFunctionDecl(ctx *FunctionDeclContext)
     ExitFunctionDecl is called when production functionDecl is exited.
@@ -1357,11 +1420,15 @@ func (v *BaseArcParserVisitor) VisitAssignmentStmt(ctx *AssignmentStmtContext) i
 
 func (v *BaseArcParserVisitor) VisitBlock(ctx *BlockContext) interface{}
 
+func (v *BaseArcParserVisitor) VisitBreakStmt(ctx *BreakStmtContext) interface{}
+
 func (v *BaseArcParserVisitor) VisitCastExpression(ctx *CastExpressionContext) interface{}
 
 func (v *BaseArcParserVisitor) VisitCompilationUnit(ctx *CompilationUnitContext) interface{}
 
 func (v *BaseArcParserVisitor) VisitConstDecl(ctx *ConstDeclContext) interface{}
+
+func (v *BaseArcParserVisitor) VisitContinueStmt(ctx *ContinueStmtContext) interface{}
 
 func (v *BaseArcParserVisitor) VisitDeferStmt(ctx *DeferStmtContext) interface{}
 
@@ -1380,6 +1447,8 @@ func (v *BaseArcParserVisitor) VisitExternMember(ctx *ExternMemberContext) inter
 func (v *BaseArcParserVisitor) VisitExternParameterList(ctx *ExternParameterListContext) interface{}
 
 func (v *BaseArcParserVisitor) VisitFieldInit(ctx *FieldInitContext) interface{}
+
+func (v *BaseArcParserVisitor) VisitForStmt(ctx *ForStmtContext) interface{}
 
 func (v *BaseArcParserVisitor) VisitFunctionDecl(ctx *FunctionDeclContext) interface{}
 
@@ -1477,6 +1546,31 @@ func (s *BlockContext) RBRACE() antlr.TerminalNode
 func (s *BlockContext) Statement(i int) IStatementContext
 
 func (s *BlockContext) ToStringTree(ruleNames []string, recog antlr.Recognizer) string
+
+type BreakStmtContext struct {
+	antlr.BaseParserRuleContext
+	// Has unexported fields.
+}
+
+func NewBreakStmtContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *BreakStmtContext
+
+func NewEmptyBreakStmtContext() *BreakStmtContext
+
+func (s *BreakStmtContext) Accept(visitor antlr.ParseTreeVisitor) interface{}
+
+func (s *BreakStmtContext) BREAK() antlr.TerminalNode
+
+func (s *BreakStmtContext) EnterRule(listener antlr.ParseTreeListener)
+
+func (s *BreakStmtContext) ExitRule(listener antlr.ParseTreeListener)
+
+func (s *BreakStmtContext) GetParser() antlr.Parser
+
+func (s *BreakStmtContext) GetRuleContext() antlr.RuleContext
+
+func (*BreakStmtContext) IsBreakStmtContext()
+
+func (s *BreakStmtContext) ToStringTree(ruleNames []string, recog antlr.Recognizer) string
 
 type CastExpressionContext struct {
 	antlr.BaseParserRuleContext
@@ -1586,6 +1680,31 @@ func (*ConstDeclContext) IsConstDeclContext()
 func (s *ConstDeclContext) ToStringTree(ruleNames []string, recog antlr.Recognizer) string
 
 func (s *ConstDeclContext) Type_() ITypeContext
+
+type ContinueStmtContext struct {
+	antlr.BaseParserRuleContext
+	// Has unexported fields.
+}
+
+func NewContinueStmtContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *ContinueStmtContext
+
+func NewEmptyContinueStmtContext() *ContinueStmtContext
+
+func (s *ContinueStmtContext) Accept(visitor antlr.ParseTreeVisitor) interface{}
+
+func (s *ContinueStmtContext) CONTINUE() antlr.TerminalNode
+
+func (s *ContinueStmtContext) EnterRule(listener antlr.ParseTreeListener)
+
+func (s *ContinueStmtContext) ExitRule(listener antlr.ParseTreeListener)
+
+func (s *ContinueStmtContext) GetParser() antlr.Parser
+
+func (s *ContinueStmtContext) GetRuleContext() antlr.RuleContext
+
+func (*ContinueStmtContext) IsContinueStmtContext()
+
+func (s *ContinueStmtContext) ToStringTree(ruleNames []string, recog antlr.Recognizer) string
 
 type DeferStmtContext struct {
 	antlr.BaseParserRuleContext
@@ -1858,6 +1977,47 @@ func (*FieldInitContext) IsFieldInitContext()
 
 func (s *FieldInitContext) ToStringTree(ruleNames []string, recog antlr.Recognizer) string
 
+type ForStmtContext struct {
+	antlr.BaseParserRuleContext
+	// Has unexported fields.
+}
+
+func NewEmptyForStmtContext() *ForStmtContext
+
+func NewForStmtContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *ForStmtContext
+
+func (s *ForStmtContext) Accept(visitor antlr.ParseTreeVisitor) interface{}
+
+func (s *ForStmtContext) AllAssignmentStmt() []IAssignmentStmtContext
+
+func (s *ForStmtContext) AllExpression() []IExpressionContext
+
+func (s *ForStmtContext) AllSEMICOLON() []antlr.TerminalNode
+
+func (s *ForStmtContext) AssignmentStmt(i int) IAssignmentStmtContext
+
+func (s *ForStmtContext) Block() IBlockContext
+
+func (s *ForStmtContext) EnterRule(listener antlr.ParseTreeListener)
+
+func (s *ForStmtContext) ExitRule(listener antlr.ParseTreeListener)
+
+func (s *ForStmtContext) Expression(i int) IExpressionContext
+
+func (s *ForStmtContext) FOR() antlr.TerminalNode
+
+func (s *ForStmtContext) GetParser() antlr.Parser
+
+func (s *ForStmtContext) GetRuleContext() antlr.RuleContext
+
+func (*ForStmtContext) IsForStmtContext()
+
+func (s *ForStmtContext) SEMICOLON(i int) antlr.TerminalNode
+
+func (s *ForStmtContext) ToStringTree(ruleNames []string, recog antlr.Recognizer) string
+
+func (s *ForStmtContext) VariableDecl() IVariableDeclContext
+
 type FunctionDeclContext struct {
 	antlr.BaseParserRuleContext
 	// Has unexported fields.
@@ -1983,6 +2143,20 @@ type IBlockContext interface {
 }
     IBlockContext is an interface to support dynamic dispatch.
 
+type IBreakStmtContext interface {
+	antlr.ParserRuleContext
+
+	// GetParser returns the parser.
+	GetParser() antlr.Parser
+
+	// Getter signatures
+	BREAK() antlr.TerminalNode
+
+	// IsBreakStmtContext differentiates from other interfaces.
+	IsBreakStmtContext()
+}
+    IBreakStmtContext is an interface to support dynamic dispatch.
+
 type ICastExpressionContext interface {
 	antlr.ParserRuleContext
 
@@ -2041,6 +2215,20 @@ type IConstDeclContext interface {
 	IsConstDeclContext()
 }
     IConstDeclContext is an interface to support dynamic dispatch.
+
+type IContinueStmtContext interface {
+	antlr.ParserRuleContext
+
+	// GetParser returns the parser.
+	GetParser() antlr.Parser
+
+	// Getter signatures
+	CONTINUE() antlr.TerminalNode
+
+	// IsContinueStmtContext differentiates from other interfaces.
+	IsContinueStmtContext()
+}
+    IContinueStmtContext is an interface to support dynamic dispatch.
 
 type IDeferStmtContext interface {
 	antlr.ParserRuleContext
@@ -2190,6 +2378,28 @@ type IFieldInitContext interface {
 	IsFieldInitContext()
 }
     IFieldInitContext is an interface to support dynamic dispatch.
+
+type IForStmtContext interface {
+	antlr.ParserRuleContext
+
+	// GetParser returns the parser.
+	GetParser() antlr.Parser
+
+	// Getter signatures
+	FOR() antlr.TerminalNode
+	Block() IBlockContext
+	AllExpression() []IExpressionContext
+	Expression(i int) IExpressionContext
+	AllSEMICOLON() []antlr.TerminalNode
+	SEMICOLON(i int) antlr.TerminalNode
+	VariableDecl() IVariableDeclContext
+	AllAssignmentStmt() []IAssignmentStmtContext
+	AssignmentStmt(i int) IAssignmentStmtContext
+
+	// IsForStmtContext differentiates from other interfaces.
+	IsForStmtContext()
+}
+    IForStmtContext is an interface to support dynamic dispatch.
 
 type IFunctionDeclContext interface {
 	antlr.ParserRuleContext
@@ -2628,6 +2838,9 @@ type IStatementContext interface {
 	ExpressionStmt() IExpressionStmtContext
 	ReturnStmt() IReturnStmtContext
 	IfStmt() IIfStmtContext
+	ForStmt() IForStmtContext
+	BreakStmt() IBreakStmtContext
+	ContinueStmt() IContinueStmtContext
 	DeferStmt() IDeferStmtContext
 	Block() IBlockContext
 
@@ -3557,7 +3770,11 @@ func (s *StatementContext) AssignmentStmt() IAssignmentStmtContext
 
 func (s *StatementContext) Block() IBlockContext
 
+func (s *StatementContext) BreakStmt() IBreakStmtContext
+
 func (s *StatementContext) ConstDecl() IConstDeclContext
+
+func (s *StatementContext) ContinueStmt() IContinueStmtContext
 
 func (s *StatementContext) DeferStmt() IDeferStmtContext
 
@@ -3566,6 +3783,8 @@ func (s *StatementContext) EnterRule(listener antlr.ParseTreeListener)
 func (s *StatementContext) ExitRule(listener antlr.ParseTreeListener)
 
 func (s *StatementContext) ExpressionStmt() IExpressionStmtContext
+
+func (s *StatementContext) ForStmt() IForStmtContext
 
 func (s *StatementContext) GetParser() antlr.Parser
 
