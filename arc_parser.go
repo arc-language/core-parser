@@ -256,10 +256,10 @@ func arcparserParserInit() {
 		0, 0, 367, 361, 1, 0, 0, 0, 367, 362, 1, 0, 0, 0, 367, 363, 1, 0, 0, 0,
 		367, 364, 1, 0, 0, 0, 367, 365, 1, 0, 0, 0, 367, 366, 1, 0, 0, 0, 368,
 		59, 1, 0, 0, 0, 369, 370, 3, 62, 31, 0, 370, 371, 7, 1, 0, 0, 371, 372,
-		3, 78, 39, 0, 372, 61, 1, 0, 0, 0, 373, 381, 5, 77, 0, 0, 374, 375, 5,
-		53, 0, 0, 375, 381, 3, 78, 39, 0, 376, 377, 3, 78, 39, 0, 377, 378, 5,
-		71, 0, 0, 378, 379, 5, 77, 0, 0, 379, 381, 1, 0, 0, 0, 380, 373, 1, 0,
-		0, 0, 380, 374, 1, 0, 0, 0, 380, 376, 1, 0, 0, 0, 381, 63, 1, 0, 0, 0,
+		3, 78, 39, 0, 372, 61, 1, 0, 0, 0, 373, 374, 5, 53, 0, 0, 374, 381, 3,
+		96, 48, 0, 375, 376, 3, 96, 48, 0, 376, 377, 5, 71, 0, 0, 377, 378, 5,
+		77, 0, 0, 378, 381, 1, 0, 0, 0, 379, 381, 5, 77, 0, 0, 380, 373, 1, 0,
+		0, 0, 380, 375, 1, 0, 0, 0, 380, 379, 1, 0, 0, 0, 381, 63, 1, 0, 0, 0,
 		382, 383, 3, 78, 39, 0, 383, 65, 1, 0, 0, 0, 384, 386, 5, 9, 0, 0, 385,
 		387, 3, 78, 39, 0, 386, 385, 1, 0, 0, 0, 386, 387, 1, 0, 0, 0, 387, 67,
 		1, 0, 0, 0, 388, 389, 5, 10, 0, 0, 389, 390, 3, 78, 39, 0, 390, 398, 3,
@@ -6752,10 +6752,10 @@ type ILeftHandSideContext interface {
 	GetParser() antlr.Parser
 
 	// Getter signatures
-	IDENTIFIER() antlr.TerminalNode
 	STAR() antlr.TerminalNode
-	Expression() IExpressionContext
+	PostfixExpression() IPostfixExpressionContext
 	DOT() antlr.TerminalNode
+	IDENTIFIER() antlr.TerminalNode
 
 	// IsLeftHandSideContext differentiates from other interfaces.
 	IsLeftHandSideContext()
@@ -6793,18 +6793,14 @@ func NewLeftHandSideContext(parser antlr.Parser, parent antlr.ParserRuleContext,
 
 func (s *LeftHandSideContext) GetParser() antlr.Parser { return s.parser }
 
-func (s *LeftHandSideContext) IDENTIFIER() antlr.TerminalNode {
-	return s.GetToken(ArcParserIDENTIFIER, 0)
-}
-
 func (s *LeftHandSideContext) STAR() antlr.TerminalNode {
 	return s.GetToken(ArcParserSTAR, 0)
 }
 
-func (s *LeftHandSideContext) Expression() IExpressionContext {
+func (s *LeftHandSideContext) PostfixExpression() IPostfixExpressionContext {
 	var t antlr.RuleContext
 	for _, ctx := range s.GetChildren() {
-		if _, ok := ctx.(IExpressionContext); ok {
+		if _, ok := ctx.(IPostfixExpressionContext); ok {
 			t = ctx.(antlr.RuleContext)
 			break
 		}
@@ -6814,11 +6810,15 @@ func (s *LeftHandSideContext) Expression() IExpressionContext {
 		return nil
 	}
 
-	return t.(IExpressionContext)
+	return t.(IPostfixExpressionContext)
 }
 
 func (s *LeftHandSideContext) DOT() antlr.TerminalNode {
 	return s.GetToken(ArcParserDOT, 0)
+}
+
+func (s *LeftHandSideContext) IDENTIFIER() antlr.TerminalNode {
+	return s.GetToken(ArcParserIDENTIFIER, 0)
 }
 
 func (s *LeftHandSideContext) GetRuleContext() antlr.RuleContext {
@@ -6865,17 +6865,6 @@ func (p *ArcParser) LeftHandSide() (localctx ILeftHandSideContext) {
 		p.EnterOuterAlt(localctx, 1)
 		{
 			p.SetState(373)
-			p.Match(ArcParserIDENTIFIER)
-			if p.HasError() {
-				// Recognition error - abort rule
-				goto errorExit
-			}
-		}
-
-	case 2:
-		p.EnterOuterAlt(localctx, 2)
-		{
-			p.SetState(374)
 			p.Match(ArcParserSTAR)
 			if p.HasError() {
 				// Recognition error - abort rule
@@ -6883,18 +6872,18 @@ func (p *ArcParser) LeftHandSide() (localctx ILeftHandSideContext) {
 			}
 		}
 		{
-			p.SetState(375)
-			p.Expression()
+			p.SetState(374)
+			p.PostfixExpression()
 		}
 
-	case 3:
-		p.EnterOuterAlt(localctx, 3)
+	case 2:
+		p.EnterOuterAlt(localctx, 2)
 		{
-			p.SetState(376)
-			p.Expression()
+			p.SetState(375)
+			p.PostfixExpression()
 		}
 		{
-			p.SetState(377)
+			p.SetState(376)
 			p.Match(ArcParserDOT)
 			if p.HasError() {
 				// Recognition error - abort rule
@@ -6902,7 +6891,18 @@ func (p *ArcParser) LeftHandSide() (localctx ILeftHandSideContext) {
 			}
 		}
 		{
-			p.SetState(378)
+			p.SetState(377)
+			p.Match(ArcParserIDENTIFIER)
+			if p.HasError() {
+				// Recognition error - abort rule
+				goto errorExit
+			}
+		}
+
+	case 3:
+		p.EnterOuterAlt(localctx, 3)
+		{
+			p.SetState(379)
 			p.Match(ArcParserIDENTIFIER)
 			if p.HasError() {
 				// Recognition error - abort rule
@@ -7762,7 +7762,7 @@ func (p *ArcParser) ForStmt() (localctx IForStmtContext) {
 				p.VariableDecl()
 			}
 
-		case ArcParserALLOCA, ArcParserCAST, ArcParserMINUS, ArcParserSTAR, ArcParserNOT, ArcParserAMP, ArcParserLPAREN, ArcParserLBRACE, ArcParserBOOLEAN_LITERAL, ArcParserINTEGER_LITERAL, ArcParserFLOAT_LITERAL, ArcParserSTRING_LITERAL, ArcParserCHAR_LITERAL, ArcParserIDENTIFIER:
+		case ArcParserALLOCA, ArcParserCAST, ArcParserSTAR, ArcParserLPAREN, ArcParserLBRACE, ArcParserBOOLEAN_LITERAL, ArcParserINTEGER_LITERAL, ArcParserFLOAT_LITERAL, ArcParserSTRING_LITERAL, ArcParserCHAR_LITERAL, ArcParserIDENTIFIER:
 			{
 				p.SetState(413)
 				p.AssignmentStmt()

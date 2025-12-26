@@ -2866,10 +2866,10 @@ type ILeftHandSideContext interface {
 	GetParser() antlr.Parser
 
 	// Getter signatures
-	IDENTIFIER() antlr.TerminalNode
 	STAR() antlr.TerminalNode
-	Expression() IExpressionContext
+	PostfixExpression() IPostfixExpressionContext
 	DOT() antlr.TerminalNode
+	IDENTIFIER() antlr.TerminalNode
 
 	// IsLeftHandSideContext differentiates from other interfaces.
 	IsLeftHandSideContext()
@@ -3576,8 +3576,6 @@ func (s *LeftHandSideContext) EnterRule(listener antlr.ParseTreeListener)
 
 func (s *LeftHandSideContext) ExitRule(listener antlr.ParseTreeListener)
 
-func (s *LeftHandSideContext) Expression() IExpressionContext
-
 func (s *LeftHandSideContext) GetParser() antlr.Parser
 
 func (s *LeftHandSideContext) GetRuleContext() antlr.RuleContext
@@ -3585,6 +3583,8 @@ func (s *LeftHandSideContext) GetRuleContext() antlr.RuleContext
 func (s *LeftHandSideContext) IDENTIFIER() antlr.TerminalNode
 
 func (*LeftHandSideContext) IsLeftHandSideContext()
+
+func (s *LeftHandSideContext) PostfixExpression() IPostfixExpressionContext
 
 func (s *LeftHandSideContext) STAR() antlr.TerminalNode
 

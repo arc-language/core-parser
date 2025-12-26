@@ -177,10 +177,12 @@ assignmentStmt
     : leftHandSide (ASSIGN | PLUS_ASSIGN | MINUS_ASSIGN) expression
     ;
 
+// FIXED: Reordered to resolve ambiguity
+// The key is to match more specific patterns first
 leftHandSide
-    : IDENTIFIER
-    | STAR expression
-    | expression DOT IDENTIFIER
+    : STAR postfixExpression              // Pointer dereference: *ptr = value
+    | postfixExpression DOT IDENTIFIER    // Field access: obj.field = value
+    | IDENTIFIER                          // Simple variable: x = value
     ;
 
 expressionStmt
