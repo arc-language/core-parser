@@ -4662,4 +4662,3 @@ func (s *VectorTypeContext) ToStringTree(ruleNames []string, recog antlr.Recogni
 func (s *VectorTypeContext) Type_() ITypeContext
 
 func (s *VectorTypeContext) VECTOR() antlr.TerminalNode
-
