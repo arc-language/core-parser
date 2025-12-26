@@ -99,11 +99,47 @@ func (s *BaseArcParserListener) EnterStructDecl(ctx *StructDeclContext) {}
 // ExitStructDecl is called when production structDecl is exited.
 func (s *BaseArcParserListener) ExitStructDecl(ctx *StructDeclContext) {}
 
+// EnterStructMember is called when production structMember is entered.
+func (s *BaseArcParserListener) EnterStructMember(ctx *StructMemberContext) {}
+
+// ExitStructMember is called when production structMember is exited.
+func (s *BaseArcParserListener) ExitStructMember(ctx *StructMemberContext) {}
+
 // EnterStructField is called when production structField is entered.
 func (s *BaseArcParserListener) EnterStructField(ctx *StructFieldContext) {}
 
 // ExitStructField is called when production structField is exited.
 func (s *BaseArcParserListener) ExitStructField(ctx *StructFieldContext) {}
+
+// EnterClassDecl is called when production classDecl is entered.
+func (s *BaseArcParserListener) EnterClassDecl(ctx *ClassDeclContext) {}
+
+// ExitClassDecl is called when production classDecl is exited.
+func (s *BaseArcParserListener) ExitClassDecl(ctx *ClassDeclContext) {}
+
+// EnterClassMember is called when production classMember is entered.
+func (s *BaseArcParserListener) EnterClassMember(ctx *ClassMemberContext) {}
+
+// ExitClassMember is called when production classMember is exited.
+func (s *BaseArcParserListener) ExitClassMember(ctx *ClassMemberContext) {}
+
+// EnterClassField is called when production classField is entered.
+func (s *BaseArcParserListener) EnterClassField(ctx *ClassFieldContext) {}
+
+// ExitClassField is called when production classField is exited.
+func (s *BaseArcParserListener) ExitClassField(ctx *ClassFieldContext) {}
+
+// EnterMethodDecl is called when production methodDecl is entered.
+func (s *BaseArcParserListener) EnterMethodDecl(ctx *MethodDeclContext) {}
+
+// ExitMethodDecl is called when production methodDecl is exited.
+func (s *BaseArcParserListener) ExitMethodDecl(ctx *MethodDeclContext) {}
+
+// EnterDeinitDecl is called when production deinitDecl is entered.
+func (s *BaseArcParserListener) EnterDeinitDecl(ctx *DeinitDeclContext) {}
+
+// ExitDeinitDecl is called when production deinitDecl is exited.
+func (s *BaseArcParserListener) ExitDeinitDecl(ctx *DeinitDeclContext) {}
 
 // EnterVariableDecl is called when production variableDecl is entered.
 func (s *BaseArcParserListener) EnterVariableDecl(ctx *VariableDeclContext) {}
@@ -248,6 +284,12 @@ func (s *BaseArcParserListener) EnterRelationalExpression(ctx *RelationalExpress
 
 // ExitRelationalExpression is called when production relationalExpression is exited.
 func (s *BaseArcParserListener) ExitRelationalExpression(ctx *RelationalExpressionContext) {}
+
+// EnterRangeExpression is called when production rangeExpression is entered.
+func (s *BaseArcParserListener) EnterRangeExpression(ctx *RangeExpressionContext) {}
+
+// ExitRangeExpression is called when production rangeExpression is exited.
+func (s *BaseArcParserListener) ExitRangeExpression(ctx *RangeExpressionContext) {}
 
 // EnterAdditiveExpression is called when production additiveExpression is entered.
 func (s *BaseArcParserListener) EnterAdditiveExpression(ctx *AdditiveExpressionContext) {}

@@ -60,7 +60,31 @@ func (v *BaseArcParserVisitor) VisitStructDecl(ctx *StructDeclContext) interface
 	return v.VisitChildren(ctx)
 }
 
+func (v *BaseArcParserVisitor) VisitStructMember(ctx *StructMemberContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
 func (v *BaseArcParserVisitor) VisitStructField(ctx *StructFieldContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
+func (v *BaseArcParserVisitor) VisitClassDecl(ctx *ClassDeclContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
+func (v *BaseArcParserVisitor) VisitClassMember(ctx *ClassMemberContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
+func (v *BaseArcParserVisitor) VisitClassField(ctx *ClassFieldContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
+func (v *BaseArcParserVisitor) VisitMethodDecl(ctx *MethodDeclContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
+func (v *BaseArcParserVisitor) VisitDeinitDecl(ctx *DeinitDeclContext) interface{} {
 	return v.VisitChildren(ctx)
 }
 
@@ -157,6 +181,10 @@ func (v *BaseArcParserVisitor) VisitEqualityExpression(ctx *EqualityExpressionCo
 }
 
 func (v *BaseArcParserVisitor) VisitRelationalExpression(ctx *RelationalExpressionContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
+func (v *BaseArcParserVisitor) VisitRangeExpression(ctx *RangeExpressionContext) interface{} {
 	return v.VisitChildren(ctx)
 }
 

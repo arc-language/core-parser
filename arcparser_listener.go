@@ -47,8 +47,26 @@ type ArcParserListener interface {
 	// EnterStructDecl is called when entering the structDecl production.
 	EnterStructDecl(c *StructDeclContext)
 
+	// EnterStructMember is called when entering the structMember production.
+	EnterStructMember(c *StructMemberContext)
+
 	// EnterStructField is called when entering the structField production.
 	EnterStructField(c *StructFieldContext)
+
+	// EnterClassDecl is called when entering the classDecl production.
+	EnterClassDecl(c *ClassDeclContext)
+
+	// EnterClassMember is called when entering the classMember production.
+	EnterClassMember(c *ClassMemberContext)
+
+	// EnterClassField is called when entering the classField production.
+	EnterClassField(c *ClassFieldContext)
+
+	// EnterMethodDecl is called when entering the methodDecl production.
+	EnterMethodDecl(c *MethodDeclContext)
+
+	// EnterDeinitDecl is called when entering the deinitDecl production.
+	EnterDeinitDecl(c *DeinitDeclContext)
 
 	// EnterVariableDecl is called when entering the variableDecl production.
 	EnterVariableDecl(c *VariableDeclContext)
@@ -121,6 +139,9 @@ type ArcParserListener interface {
 
 	// EnterRelationalExpression is called when entering the relationalExpression production.
 	EnterRelationalExpression(c *RelationalExpressionContext)
+
+	// EnterRangeExpression is called when entering the rangeExpression production.
+	EnterRangeExpression(c *RangeExpressionContext)
 
 	// EnterAdditiveExpression is called when entering the additiveExpression production.
 	EnterAdditiveExpression(c *AdditiveExpressionContext)
@@ -206,8 +227,26 @@ type ArcParserListener interface {
 	// ExitStructDecl is called when exiting the structDecl production.
 	ExitStructDecl(c *StructDeclContext)
 
+	// ExitStructMember is called when exiting the structMember production.
+	ExitStructMember(c *StructMemberContext)
+
 	// ExitStructField is called when exiting the structField production.
 	ExitStructField(c *StructFieldContext)
+
+	// ExitClassDecl is called when exiting the classDecl production.
+	ExitClassDecl(c *ClassDeclContext)
+
+	// ExitClassMember is called when exiting the classMember production.
+	ExitClassMember(c *ClassMemberContext)
+
+	// ExitClassField is called when exiting the classField production.
+	ExitClassField(c *ClassFieldContext)
+
+	// ExitMethodDecl is called when exiting the methodDecl production.
+	ExitMethodDecl(c *MethodDeclContext)
+
+	// ExitDeinitDecl is called when exiting the deinitDecl production.
+	ExitDeinitDecl(c *DeinitDeclContext)
 
 	// ExitVariableDecl is called when exiting the variableDecl production.
 	ExitVariableDecl(c *VariableDeclContext)
@@ -280,6 +319,9 @@ type ArcParserListener interface {
 
 	// ExitRelationalExpression is called when exiting the relationalExpression production.
 	ExitRelationalExpression(c *RelationalExpressionContext)
+
+	// ExitRangeExpression is called when exiting the rangeExpression production.
+	ExitRangeExpression(c *RangeExpressionContext)
 
 	// ExitAdditiveExpression is called when exiting the additiveExpression production.
 	ExitAdditiveExpression(c *AdditiveExpressionContext)

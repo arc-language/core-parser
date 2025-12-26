@@ -47,8 +47,26 @@ type ArcParserVisitor interface {
 	// Visit a parse tree produced by ArcParser#structDecl.
 	VisitStructDecl(ctx *StructDeclContext) interface{}
 
+	// Visit a parse tree produced by ArcParser#structMember.
+	VisitStructMember(ctx *StructMemberContext) interface{}
+
 	// Visit a parse tree produced by ArcParser#structField.
 	VisitStructField(ctx *StructFieldContext) interface{}
+
+	// Visit a parse tree produced by ArcParser#classDecl.
+	VisitClassDecl(ctx *ClassDeclContext) interface{}
+
+	// Visit a parse tree produced by ArcParser#classMember.
+	VisitClassMember(ctx *ClassMemberContext) interface{}
+
+	// Visit a parse tree produced by ArcParser#classField.
+	VisitClassField(ctx *ClassFieldContext) interface{}
+
+	// Visit a parse tree produced by ArcParser#methodDecl.
+	VisitMethodDecl(ctx *MethodDeclContext) interface{}
+
+	// Visit a parse tree produced by ArcParser#deinitDecl.
+	VisitDeinitDecl(ctx *DeinitDeclContext) interface{}
 
 	// Visit a parse tree produced by ArcParser#variableDecl.
 	VisitVariableDecl(ctx *VariableDeclContext) interface{}
@@ -121,6 +139,9 @@ type ArcParserVisitor interface {
 
 	// Visit a parse tree produced by ArcParser#relationalExpression.
 	VisitRelationalExpression(ctx *RelationalExpressionContext) interface{}
+
+	// Visit a parse tree produced by ArcParser#rangeExpression.
+	VisitRangeExpression(ctx *RangeExpressionContext) interface{}
 
 	// Visit a parse tree produced by ArcParser#additiveExpression.
 	VisitAdditiveExpression(ctx *AdditiveExpressionContext) interface{}
