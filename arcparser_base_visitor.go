@@ -247,3 +247,7 @@ func (v *BaseArcParserVisitor) VisitCastExpression(ctx *CastExpressionContext) i
 func (v *BaseArcParserVisitor) VisitAllocaExpression(ctx *AllocaExpressionContext) interface{} {
 	return v.VisitChildren(ctx)
 }
+
+func (v *BaseArcParserVisitor) VisitSyscallExpression(ctx *SyscallExpressionContext) interface{} {
+	return v.VisitChildren(ctx)
+}

@@ -44,6 +44,7 @@ MAP: 'map';
 // Built-in Functions
 ALLOCA: 'alloca';
 CAST: 'cast';
+SYSCALL: 'syscall';
 
 // Operators (multi-character first!)
 ARROW: '->';

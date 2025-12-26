@@ -380,3 +380,9 @@ func (s *BaseArcParserListener) EnterAllocaExpression(ctx *AllocaExpressionConte
 
 // ExitAllocaExpression is called when production allocaExpression is exited.
 func (s *BaseArcParserListener) ExitAllocaExpression(ctx *AllocaExpressionContext) {}
+
+// EnterSyscallExpression is called when production syscallExpression is entered.
+func (s *BaseArcParserListener) EnterSyscallExpression(ctx *SyscallExpressionContext) {}
+
+// ExitSyscallExpression is called when production syscallExpression is exited.
+func (s *BaseArcParserListener) ExitSyscallExpression(ctx *SyscallExpressionContext) {}

@@ -280,6 +280,7 @@ primaryExpression
     | structLiteral          // MOVED: Must be before IDENTIFIER
     | castExpression         // MOVED: Should also be before IDENTIFIER
     | allocaExpression       // MOVED: Should also be before IDENTIFIER
+    | syscallExpression      // MOVED: Should also be before IDENTIFIER
     | LPAREN expression RPAREN
     | IDENTIFIER             // MOVED: Now comes after special forms
     ;
@@ -324,4 +325,8 @@ castExpression
 
 allocaExpression
     : ALLOCA LPAREN type (COMMA expression)? RPAREN
+    ;
+
+syscallExpression
+    : SYSCALL LPAREN expression (COMMA expression)* RPAREN
     ;

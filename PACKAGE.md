@@ -42,47 +42,48 @@ const (
 	ArcLexerMAP             = 37
 	ArcLexerALLOCA          = 38
 	ArcLexerCAST            = 39
-	ArcLexerARROW           = 40
-	ArcLexerRANGE           = 41
-	ArcLexerELLIPSIS        = 42
-	ArcLexerEQ              = 43
-	ArcLexerNE              = 44
-	ArcLexerLE              = 45
-	ArcLexerGE              = 46
-	ArcLexerAND             = 47
-	ArcLexerOR              = 48
-	ArcLexerPLUS_ASSIGN     = 49
-	ArcLexerMINUS_ASSIGN    = 50
-	ArcLexerPLUS            = 51
-	ArcLexerMINUS           = 52
-	ArcLexerSTAR            = 53
-	ArcLexerSLASH           = 54
-	ArcLexerPERCENT         = 55
-	ArcLexerLT              = 56
-	ArcLexerGT              = 57
-	ArcLexerNOT             = 58
-	ArcLexerAMP             = 59
-	ArcLexerAT              = 60
-	ArcLexerASSIGN          = 61
-	ArcLexerLPAREN          = 62
-	ArcLexerRPAREN          = 63
-	ArcLexerLBRACE          = 64
-	ArcLexerRBRACE          = 65
-	ArcLexerLBRACKET        = 66
-	ArcLexerRBRACKET        = 67
-	ArcLexerCOMMA           = 68
-	ArcLexerCOLON           = 69
-	ArcLexerSEMICOLON       = 70
-	ArcLexerDOT             = 71
-	ArcLexerBOOLEAN_LITERAL = 72
-	ArcLexerINTEGER_LITERAL = 73
-	ArcLexerFLOAT_LITERAL   = 74
-	ArcLexerSTRING_LITERAL  = 75
-	ArcLexerCHAR_LITERAL    = 76
-	ArcLexerIDENTIFIER      = 77
-	ArcLexerWS              = 78
-	ArcLexerLINE_COMMENT    = 79
-	ArcLexerBLOCK_COMMENT   = 80
+	ArcLexerSYSCALL         = 40
+	ArcLexerARROW           = 41
+	ArcLexerRANGE           = 42
+	ArcLexerELLIPSIS        = 43
+	ArcLexerEQ              = 44
+	ArcLexerNE              = 45
+	ArcLexerLE              = 46
+	ArcLexerGE              = 47
+	ArcLexerAND             = 48
+	ArcLexerOR              = 49
+	ArcLexerPLUS_ASSIGN     = 50
+	ArcLexerMINUS_ASSIGN    = 51
+	ArcLexerPLUS            = 52
+	ArcLexerMINUS           = 53
+	ArcLexerSTAR            = 54
+	ArcLexerSLASH           = 55
+	ArcLexerPERCENT         = 56
+	ArcLexerLT              = 57
+	ArcLexerGT              = 58
+	ArcLexerNOT             = 59
+	ArcLexerAMP             = 60
+	ArcLexerAT              = 61
+	ArcLexerASSIGN          = 62
+	ArcLexerLPAREN          = 63
+	ArcLexerRPAREN          = 64
+	ArcLexerLBRACE          = 65
+	ArcLexerRBRACE          = 66
+	ArcLexerLBRACKET        = 67
+	ArcLexerRBRACKET        = 68
+	ArcLexerCOMMA           = 69
+	ArcLexerCOLON           = 70
+	ArcLexerSEMICOLON       = 71
+	ArcLexerDOT             = 72
+	ArcLexerBOOLEAN_LITERAL = 73
+	ArcLexerINTEGER_LITERAL = 74
+	ArcLexerFLOAT_LITERAL   = 75
+	ArcLexerSTRING_LITERAL  = 76
+	ArcLexerCHAR_LITERAL    = 77
+	ArcLexerIDENTIFIER      = 78
+	ArcLexerWS              = 79
+	ArcLexerLINE_COMMENT    = 80
+	ArcLexerBLOCK_COMMENT   = 81
 )
     ArcLexer tokens.
 
@@ -127,47 +128,48 @@ const (
 	ArcParserMAP             = 37
 	ArcParserALLOCA          = 38
 	ArcParserCAST            = 39
-	ArcParserARROW           = 40
-	ArcParserRANGE           = 41
-	ArcParserELLIPSIS        = 42
-	ArcParserEQ              = 43
-	ArcParserNE              = 44
-	ArcParserLE              = 45
-	ArcParserGE              = 46
-	ArcParserAND             = 47
-	ArcParserOR              = 48
-	ArcParserPLUS_ASSIGN     = 49
-	ArcParserMINUS_ASSIGN    = 50
-	ArcParserPLUS            = 51
-	ArcParserMINUS           = 52
-	ArcParserSTAR            = 53
-	ArcParserSLASH           = 54
-	ArcParserPERCENT         = 55
-	ArcParserLT              = 56
-	ArcParserGT              = 57
-	ArcParserNOT             = 58
-	ArcParserAMP             = 59
-	ArcParserAT              = 60
-	ArcParserASSIGN          = 61
-	ArcParserLPAREN          = 62
-	ArcParserRPAREN          = 63
-	ArcParserLBRACE          = 64
-	ArcParserRBRACE          = 65
-	ArcParserLBRACKET        = 66
-	ArcParserRBRACKET        = 67
-	ArcParserCOMMA           = 68
-	ArcParserCOLON           = 69
-	ArcParserSEMICOLON       = 70
-	ArcParserDOT             = 71
-	ArcParserBOOLEAN_LITERAL = 72
-	ArcParserINTEGER_LITERAL = 73
-	ArcParserFLOAT_LITERAL   = 74
-	ArcParserSTRING_LITERAL  = 75
-	ArcParserCHAR_LITERAL    = 76
-	ArcParserIDENTIFIER      = 77
-	ArcParserWS              = 78
-	ArcParserLINE_COMMENT    = 79
-	ArcParserBLOCK_COMMENT   = 80
+	ArcParserSYSCALL         = 40
+	ArcParserARROW           = 41
+	ArcParserRANGE           = 42
+	ArcParserELLIPSIS        = 43
+	ArcParserEQ              = 44
+	ArcParserNE              = 45
+	ArcParserLE              = 46
+	ArcParserGE              = 47
+	ArcParserAND             = 48
+	ArcParserOR              = 49
+	ArcParserPLUS_ASSIGN     = 50
+	ArcParserMINUS_ASSIGN    = 51
+	ArcParserPLUS            = 52
+	ArcParserMINUS           = 53
+	ArcParserSTAR            = 54
+	ArcParserSLASH           = 55
+	ArcParserPERCENT         = 56
+	ArcParserLT              = 57
+	ArcParserGT              = 58
+	ArcParserNOT             = 59
+	ArcParserAMP             = 60
+	ArcParserAT              = 61
+	ArcParserASSIGN          = 62
+	ArcParserLPAREN          = 63
+	ArcParserRPAREN          = 64
+	ArcParserLBRACE          = 65
+	ArcParserRBRACE          = 66
+	ArcParserLBRACKET        = 67
+	ArcParserRBRACKET        = 68
+	ArcParserCOMMA           = 69
+	ArcParserCOLON           = 70
+	ArcParserSEMICOLON       = 71
+	ArcParserDOT             = 72
+	ArcParserBOOLEAN_LITERAL = 73
+	ArcParserINTEGER_LITERAL = 74
+	ArcParserFLOAT_LITERAL   = 75
+	ArcParserSTRING_LITERAL  = 76
+	ArcParserCHAR_LITERAL    = 77
+	ArcParserIDENTIFIER      = 78
+	ArcParserWS              = 79
+	ArcParserLINE_COMMENT    = 80
+	ArcParserBLOCK_COMMENT   = 81
 )
     ArcParser tokens.
 
@@ -232,6 +234,7 @@ const (
 	ArcParserRULE_argumentList             = 57
 	ArcParserRULE_castExpression           = 58
 	ArcParserRULE_allocaExpression         = 59
+	ArcParserRULE_syscallExpression        = 60
 )
     ArcParser rules.
 
@@ -329,6 +332,7 @@ func InitEmptyStructDeclContext(p *StructDeclContext)
 func InitEmptyStructFieldContext(p *StructFieldContext)
 func InitEmptyStructLiteralContext(p *StructLiteralContext)
 func InitEmptyStructMemberContext(p *StructMemberContext)
+func InitEmptySyscallExpressionContext(p *SyscallExpressionContext)
 func InitEmptyTopLevelDeclContext(p *TopLevelDeclContext)
 func InitEmptyTypeContext(p *TypeContext)
 func InitEmptyUnaryExpressionContext(p *UnaryExpressionContext)
@@ -534,6 +538,8 @@ func (p *ArcParser) StructLiteral() (localctx IStructLiteralContext)
 
 func (p *ArcParser) StructMember() (localctx IStructMemberContext)
 
+func (p *ArcParser) SyscallExpression() (localctx ISyscallExpressionContext)
+
 func (p *ArcParser) TopLevelDecl() (localctx ITopLevelDeclContext)
 
 func (p *ArcParser) Type_() (localctx ITypeContext)
@@ -729,6 +735,9 @@ type ArcParserListener interface {
 	// EnterAllocaExpression is called when entering the allocaExpression production.
 	EnterAllocaExpression(c *AllocaExpressionContext)
 
+	// EnterSyscallExpression is called when entering the syscallExpression production.
+	EnterSyscallExpression(c *SyscallExpressionContext)
+
 	// ExitCompilationUnit is called when exiting the compilationUnit production.
 	ExitCompilationUnit(c *CompilationUnitContext)
 
@@ -908,6 +917,9 @@ type ArcParserListener interface {
 
 	// ExitAllocaExpression is called when exiting the allocaExpression production.
 	ExitAllocaExpression(c *AllocaExpressionContext)
+
+	// ExitSyscallExpression is called when exiting the syscallExpression production.
+	ExitSyscallExpression(c *SyscallExpressionContext)
 }
     ArcParserListener is a complete listener for a parse tree produced by
     ArcParser.
@@ -1094,6 +1106,9 @@ type ArcParserVisitor interface {
 
 	// Visit a parse tree produced by ArcParser#allocaExpression.
 	VisitAllocaExpression(ctx *AllocaExpressionContext) interface{}
+
+	// Visit a parse tree produced by ArcParser#syscallExpression.
+	VisitSyscallExpression(ctx *SyscallExpressionContext) interface{}
 }
     A complete Visitor for a parse tree produced by ArcParser.
 
@@ -1340,6 +1355,10 @@ func (s *BaseArcParserListener) EnterStructLiteral(ctx *StructLiteralContext)
 func (s *BaseArcParserListener) EnterStructMember(ctx *StructMemberContext)
     EnterStructMember is called when production structMember is entered.
 
+func (s *BaseArcParserListener) EnterSyscallExpression(ctx *SyscallExpressionContext)
+    EnterSyscallExpression is called when production syscallExpression is
+    entered.
+
 func (s *BaseArcParserListener) EnterTopLevelDecl(ctx *TopLevelDeclContext)
     EnterTopLevelDecl is called when production topLevelDecl is entered.
 
@@ -1531,6 +1550,9 @@ func (s *BaseArcParserListener) ExitStructLiteral(ctx *StructLiteralContext)
 func (s *BaseArcParserListener) ExitStructMember(ctx *StructMemberContext)
     ExitStructMember is called when production structMember is exited.
 
+func (s *BaseArcParserListener) ExitSyscallExpression(ctx *SyscallExpressionContext)
+    ExitSyscallExpression is called when production syscallExpression is exited.
+
 func (s *BaseArcParserListener) ExitTopLevelDecl(ctx *TopLevelDeclContext)
     ExitTopLevelDecl is called when production topLevelDecl is exited.
 
@@ -1666,6 +1688,8 @@ func (v *BaseArcParserVisitor) VisitStructField(ctx *StructFieldContext) interfa
 func (v *BaseArcParserVisitor) VisitStructLiteral(ctx *StructLiteralContext) interface{}
 
 func (v *BaseArcParserVisitor) VisitStructMember(ctx *StructMemberContext) interface{}
+
+func (v *BaseArcParserVisitor) VisitSyscallExpression(ctx *SyscallExpressionContext) interface{}
 
 func (v *BaseArcParserVisitor) VisitTopLevelDecl(ctx *TopLevelDeclContext) interface{}
 
@@ -3143,6 +3167,7 @@ type IPrimaryExpressionContext interface {
 	StructLiteral() IStructLiteralContext
 	CastExpression() ICastExpressionContext
 	AllocaExpression() IAllocaExpressionContext
+	SyscallExpression() ISyscallExpressionContext
 	LPAREN() antlr.TerminalNode
 	Expression() IExpressionContext
 	RPAREN() antlr.TerminalNode
@@ -3345,6 +3370,26 @@ type IStructMemberContext interface {
 	IsStructMemberContext()
 }
     IStructMemberContext is an interface to support dynamic dispatch.
+
+type ISyscallExpressionContext interface {
+	antlr.ParserRuleContext
+
+	// GetParser returns the parser.
+	GetParser() antlr.Parser
+
+	// Getter signatures
+	SYSCALL() antlr.TerminalNode
+	LPAREN() antlr.TerminalNode
+	AllExpression() []IExpressionContext
+	Expression(i int) IExpressionContext
+	RPAREN() antlr.TerminalNode
+	AllCOMMA() []antlr.TerminalNode
+	COMMA(i int) antlr.TerminalNode
+
+	// IsSyscallExpressionContext differentiates from other interfaces.
+	IsSyscallExpressionContext()
+}
+    ISyscallExpressionContext is an interface to support dynamic dispatch.
 
 type ITopLevelDeclContext interface {
 	antlr.ParserRuleContext
@@ -4095,6 +4140,8 @@ func (s *PrimaryExpressionContext) RPAREN() antlr.TerminalNode
 
 func (s *PrimaryExpressionContext) StructLiteral() IStructLiteralContext
 
+func (s *PrimaryExpressionContext) SyscallExpression() ISyscallExpressionContext
+
 func (s *PrimaryExpressionContext) ToStringTree(ruleNames []string, recog antlr.Recognizer) string
 
 type PrimitiveTypeContext struct {
@@ -4452,6 +4499,43 @@ func (*StructMemberContext) IsStructMemberContext()
 func (s *StructMemberContext) StructField() IStructFieldContext
 
 func (s *StructMemberContext) ToStringTree(ruleNames []string, recog antlr.Recognizer) string
+
+type SyscallExpressionContext struct {
+	antlr.BaseParserRuleContext
+	// Has unexported fields.
+}
+
+func NewEmptySyscallExpressionContext() *SyscallExpressionContext
+
+func NewSyscallExpressionContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *SyscallExpressionContext
+
+func (s *SyscallExpressionContext) Accept(visitor antlr.ParseTreeVisitor) interface{}
+
+func (s *SyscallExpressionContext) AllCOMMA() []antlr.TerminalNode
+
+func (s *SyscallExpressionContext) AllExpression() []IExpressionContext
+
+func (s *SyscallExpressionContext) COMMA(i int) antlr.TerminalNode
+
+func (s *SyscallExpressionContext) EnterRule(listener antlr.ParseTreeListener)
+
+func (s *SyscallExpressionContext) ExitRule(listener antlr.ParseTreeListener)
+
+func (s *SyscallExpressionContext) Expression(i int) IExpressionContext
+
+func (s *SyscallExpressionContext) GetParser() antlr.Parser
+
+func (s *SyscallExpressionContext) GetRuleContext() antlr.RuleContext
+
+func (*SyscallExpressionContext) IsSyscallExpressionContext()
+
+func (s *SyscallExpressionContext) LPAREN() antlr.TerminalNode
+
+func (s *SyscallExpressionContext) RPAREN() antlr.TerminalNode
+
+func (s *SyscallExpressionContext) SYSCALL() antlr.TerminalNode
+
+func (s *SyscallExpressionContext) ToStringTree(ruleNames []string, recog antlr.Recognizer) string
 
 type TopLevelDeclContext struct {
 	antlr.BaseParserRuleContext

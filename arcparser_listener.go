@@ -188,6 +188,9 @@ type ArcParserListener interface {
 	// EnterAllocaExpression is called when entering the allocaExpression production.
 	EnterAllocaExpression(c *AllocaExpressionContext)
 
+	// EnterSyscallExpression is called when entering the syscallExpression production.
+	EnterSyscallExpression(c *SyscallExpressionContext)
+
 	// ExitCompilationUnit is called when exiting the compilationUnit production.
 	ExitCompilationUnit(c *CompilationUnitContext)
 
@@ -367,4 +370,7 @@ type ArcParserListener interface {
 
 	// ExitAllocaExpression is called when exiting the allocaExpression production.
 	ExitAllocaExpression(c *AllocaExpressionContext)
+
+	// ExitSyscallExpression is called when exiting the syscallExpression production.
+	ExitSyscallExpression(c *SyscallExpressionContext)
 }

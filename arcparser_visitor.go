@@ -187,4 +187,7 @@ type ArcParserVisitor interface {
 
 	// Visit a parse tree produced by ArcParser#allocaExpression.
 	VisitAllocaExpression(ctx *AllocaExpressionContext) interface{}
+
+	// Visit a parse tree produced by ArcParser#syscallExpression.
+	VisitSyscallExpression(ctx *SyscallExpressionContext) interface{}
 }
