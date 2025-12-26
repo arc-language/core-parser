@@ -7,12 +7,15 @@ LET: 'let';
 CONST: 'const';
 FUNC: 'func';
 STRUCT: 'struct';
+CLASS: 'class';
+DEINIT: 'deinit';
 RETURN: 'return';
 IF: 'if';
 ELSE: 'else';
-FOR: 'for';         // <--- NEW
-BREAK: 'break';     // <--- NEW
-CONTINUE: 'continue'; // <--- NEW
+FOR: 'for';
+IN: 'in';
+BREAK: 'break';
+CONTINUE: 'continue';
 DEFER: 'defer';
 EXTERN: 'extern';
 SELF: 'self';
@@ -64,7 +67,10 @@ AMP: '&';
 AT: '@';
 
 ASSIGN: '=';
+PLUS_ASSIGN: '+=';
+MINUS_ASSIGN: '-=';
 ARROW: '->';
+RANGE: '..';
 
 // Delimiters
 LPAREN: '(';

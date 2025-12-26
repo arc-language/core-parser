@@ -28,6 +28,9 @@ namespaceDecl
 topLevelDecl
     : functionDecl
     | structDecl
+    | classDecl
+    | methodDecl
+    | deinitDecl
     | variableDecl
     | constDecl
     | externDecl
@@ -43,7 +46,7 @@ externMember
     ;
 
 externFunctionDecl
-    : FUNC IDENTIFIER LPAREN externParameterList? RPAREN type?
+    : FUNC IDENTIFIER (STRING_LITERAL)? LPAREN externParameterList? RPAREN type?
     ;
 
 // Extern parameters are type-only (no names required)
@@ -66,13 +69,43 @@ parameter
     : SELF? IDENTIFIER COLON type
     ;
 
-// Struct Declaration
+// Struct Declaration (can contain inline methods)
 structDecl
-    : STRUCT IDENTIFIER LBRACE structField* RBRACE
+    : STRUCT IDENTIFIER LBRACE structMember* RBRACE
+    ;
+
+structMember
+    : structField
+    | functionDecl
     ;
 
 structField
     : IDENTIFIER COLON type
+    ;
+
+// Class Declaration (can contain inline methods and deinit)
+classDecl
+    : CLASS IDENTIFIER LBRACE classMember* RBRACE
+    ;
+
+classMember
+    : classField
+    | functionDecl
+    | deinitDecl
+    ;
+
+classField
+    : IDENTIFIER COLON type
+    ;
+
+// Flat Method Declaration (outside struct/class body)
+methodDecl
+    : FUNC IDENTIFIER LPAREN SELF IDENTIFIER COLON type (COMMA parameter)* RPAREN type? block
+    ;
+
+// Deinit Declaration (can be inline or flat)
+deinitDecl
+    : DEINIT LPAREN SELF IDENTIFIER COLON type RPAREN block
     ;
 
 // Variable Declaration
@@ -92,7 +125,7 @@ type
     | referenceType
     | vectorType
     | mapType
-    | IDENTIFIER  // Named types (structs, etc.)
+    | IDENTIFIER
     ;
 
 primitiveType
@@ -133,21 +166,21 @@ statement
     | expressionStmt
     | returnStmt
     | ifStmt
-    | forStmt         // <--- NEW
-    | breakStmt       // <--- NEW
-    | continueStmt    // <--- NEW
+    | forStmt
+    | breakStmt
+    | continueStmt
     | deferStmt
     | block
     ;
 
 assignmentStmt
-    : leftHandSide ASSIGN expression
+    : leftHandSide (ASSIGN | PLUS_ASSIGN | MINUS_ASSIGN) expression
     ;
 
 leftHandSide
     : IDENTIFIER
-    | STAR expression  // Pointer dereference
-    | expression DOT IDENTIFIER  // Field access
+    | STAR expression
+    | expression DOT IDENTIFIER
     ;
 
 expressionStmt
@@ -167,10 +200,15 @@ ifStmt
 // 1. Infinite: for { }
 // 2. Condition: for x < 10 { }
 // 3. Clause: for let i=0; i<10; i=i+1 { }
+// 4. For-in: for item in collection { }
+// 5. For-in (map): for key, value in map { }
+// 6. Range: for i in 0..10 { }
 forStmt
     : FOR block
     | FOR expression block
     | FOR (variableDecl | assignmentStmt)? SEMICOLON expression? SEMICOLON (assignmentStmt | expression)? block
+    | FOR IDENTIFIER IN expression block
+    | FOR IDENTIFIER COMMA IDENTIFIER IN expression block
     ;
 
 breakStmt
@@ -203,7 +241,11 @@ equalityExpression
     ;
 
 relationalExpression
-    : additiveExpression ((LT | LE | GT | GE) additiveExpression)*
+    : rangeExpression ((LT | LE | GT | GE) rangeExpression)*
+    ;
+
+rangeExpression
+    : additiveExpression (RANGE additiveExpression)?
     ;
 
 additiveExpression
