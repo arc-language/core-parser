@@ -271,13 +271,15 @@ postfixOp
     | LPAREN argumentList? RPAREN
     ;
 
+// CRITICAL FIX: structLiteral must come BEFORE IDENTIFIER
+// This allows proper lookahead for patterns like "TypeName{...}"
 primaryExpression
     : literal
-    | IDENTIFIER
+    | structLiteral          // MOVED: Must be before IDENTIFIER
+    | castExpression         // MOVED: Should also be before IDENTIFIER
+    | allocaExpression       // MOVED: Should also be before IDENTIFIER
     | LPAREN expression RPAREN
-    | castExpression
-    | allocaExpression
-    | structLiteral
+    | IDENTIFIER             // MOVED: Now comes after special forms
     ;
 
 literal

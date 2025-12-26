@@ -49,14 +49,12 @@ CAST: 'cast';
 ARROW: '->';
 RANGE: '..';      // Must come before DOT and ELLIPSIS
 ELLIPSIS: '...';  // Must come after RANGE
-
 EQ: '==';
 NE: '!=';
 LE: '<=';
 GE: '>=';
 AND: '&&';
 OR: '||';
-
 PLUS_ASSIGN: '+=';
 MINUS_ASSIGN: '-=';
 
@@ -132,7 +130,5 @@ IDENTIFIER
 
 // Whitespace and Comments
 WS: [ \t\r\n]+ -> skip;
-
 LINE_COMMENT: '//' ~[\r\n]* -> skip;
-
 BLOCK_COMMENT: '/*' .*? '*/' -> skip;

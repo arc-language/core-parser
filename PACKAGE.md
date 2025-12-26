@@ -42,38 +42,38 @@ const (
 	ArcLexerMAP             = 37
 	ArcLexerALLOCA          = 38
 	ArcLexerCAST            = 39
-	ArcLexerPLUS            = 40
-	ArcLexerMINUS           = 41
-	ArcLexerSTAR            = 42
-	ArcLexerSLASH           = 43
-	ArcLexerPERCENT         = 44
-	ArcLexerEQ              = 45
-	ArcLexerNE              = 46
-	ArcLexerLT              = 47
-	ArcLexerLE              = 48
-	ArcLexerGT              = 49
-	ArcLexerGE              = 50
-	ArcLexerAND             = 51
-	ArcLexerOR              = 52
-	ArcLexerNOT             = 53
-	ArcLexerAMP             = 54
-	ArcLexerAT              = 55
-	ArcLexerASSIGN          = 56
-	ArcLexerPLUS_ASSIGN     = 57
-	ArcLexerMINUS_ASSIGN    = 58
-	ArcLexerARROW           = 59
-	ArcLexerRANGE           = 60
-	ArcLexerLPAREN          = 61
-	ArcLexerRPAREN          = 62
-	ArcLexerLBRACE          = 63
-	ArcLexerRBRACE          = 64
-	ArcLexerLBRACKET        = 65
-	ArcLexerRBRACKET        = 66
-	ArcLexerCOMMA           = 67
-	ArcLexerCOLON           = 68
-	ArcLexerSEMICOLON       = 69
-	ArcLexerDOT             = 70
-	ArcLexerELLIPSIS        = 71
+	ArcLexerARROW           = 40
+	ArcLexerRANGE           = 41
+	ArcLexerELLIPSIS        = 42
+	ArcLexerEQ              = 43
+	ArcLexerNE              = 44
+	ArcLexerLE              = 45
+	ArcLexerGE              = 46
+	ArcLexerAND             = 47
+	ArcLexerOR              = 48
+	ArcLexerPLUS_ASSIGN     = 49
+	ArcLexerMINUS_ASSIGN    = 50
+	ArcLexerPLUS            = 51
+	ArcLexerMINUS           = 52
+	ArcLexerSTAR            = 53
+	ArcLexerSLASH           = 54
+	ArcLexerPERCENT         = 55
+	ArcLexerLT              = 56
+	ArcLexerGT              = 57
+	ArcLexerNOT             = 58
+	ArcLexerAMP             = 59
+	ArcLexerAT              = 60
+	ArcLexerASSIGN          = 61
+	ArcLexerLPAREN          = 62
+	ArcLexerRPAREN          = 63
+	ArcLexerLBRACE          = 64
+	ArcLexerRBRACE          = 65
+	ArcLexerLBRACKET        = 66
+	ArcLexerRBRACKET        = 67
+	ArcLexerCOMMA           = 68
+	ArcLexerCOLON           = 69
+	ArcLexerSEMICOLON       = 70
+	ArcLexerDOT             = 71
 	ArcLexerBOOLEAN_LITERAL = 72
 	ArcLexerINTEGER_LITERAL = 73
 	ArcLexerFLOAT_LITERAL   = 74
@@ -127,38 +127,38 @@ const (
 	ArcParserMAP             = 37
 	ArcParserALLOCA          = 38
 	ArcParserCAST            = 39
-	ArcParserPLUS            = 40
-	ArcParserMINUS           = 41
-	ArcParserSTAR            = 42
-	ArcParserSLASH           = 43
-	ArcParserPERCENT         = 44
-	ArcParserEQ              = 45
-	ArcParserNE              = 46
-	ArcParserLT              = 47
-	ArcParserLE              = 48
-	ArcParserGT              = 49
-	ArcParserGE              = 50
-	ArcParserAND             = 51
-	ArcParserOR              = 52
-	ArcParserNOT             = 53
-	ArcParserAMP             = 54
-	ArcParserAT              = 55
-	ArcParserASSIGN          = 56
-	ArcParserPLUS_ASSIGN     = 57
-	ArcParserMINUS_ASSIGN    = 58
-	ArcParserARROW           = 59
-	ArcParserRANGE           = 60
-	ArcParserLPAREN          = 61
-	ArcParserRPAREN          = 62
-	ArcParserLBRACE          = 63
-	ArcParserRBRACE          = 64
-	ArcParserLBRACKET        = 65
-	ArcParserRBRACKET        = 66
-	ArcParserCOMMA           = 67
-	ArcParserCOLON           = 68
-	ArcParserSEMICOLON       = 69
-	ArcParserDOT             = 70
-	ArcParserELLIPSIS        = 71
+	ArcParserARROW           = 40
+	ArcParserRANGE           = 41
+	ArcParserELLIPSIS        = 42
+	ArcParserEQ              = 43
+	ArcParserNE              = 44
+	ArcParserLE              = 45
+	ArcParserGE              = 46
+	ArcParserAND             = 47
+	ArcParserOR              = 48
+	ArcParserPLUS_ASSIGN     = 49
+	ArcParserMINUS_ASSIGN    = 50
+	ArcParserPLUS            = 51
+	ArcParserMINUS           = 52
+	ArcParserSTAR            = 53
+	ArcParserSLASH           = 54
+	ArcParserPERCENT         = 55
+	ArcParserLT              = 56
+	ArcParserGT              = 57
+	ArcParserNOT             = 58
+	ArcParserAMP             = 59
+	ArcParserAT              = 60
+	ArcParserASSIGN          = 61
+	ArcParserLPAREN          = 62
+	ArcParserRPAREN          = 63
+	ArcParserLBRACE          = 64
+	ArcParserRBRACE          = 65
+	ArcParserLBRACKET        = 66
+	ArcParserRBRACKET        = 67
+	ArcParserCOMMA           = 68
+	ArcParserCOLON           = 69
+	ArcParserSEMICOLON       = 70
+	ArcParserDOT             = 71
 	ArcParserBOOLEAN_LITERAL = 72
 	ArcParserINTEGER_LITERAL = 73
 	ArcParserFLOAT_LITERAL   = 74
@@ -3140,13 +3140,13 @@ type IPrimaryExpressionContext interface {
 
 	// Getter signatures
 	Literal() ILiteralContext
-	IDENTIFIER() antlr.TerminalNode
+	StructLiteral() IStructLiteralContext
+	CastExpression() ICastExpressionContext
+	AllocaExpression() IAllocaExpressionContext
 	LPAREN() antlr.TerminalNode
 	Expression() IExpressionContext
 	RPAREN() antlr.TerminalNode
-	CastExpression() ICastExpressionContext
-	AllocaExpression() IAllocaExpressionContext
-	StructLiteral() IStructLiteralContext
+	IDENTIFIER() antlr.TerminalNode
 
 	// IsPrimaryExpressionContext differentiates from other interfaces.
 	IsPrimaryExpressionContext()
@@ -4662,3 +4662,4 @@ func (s *VectorTypeContext) ToStringTree(ruleNames []string, recog antlr.Recogni
 func (s *VectorTypeContext) Type_() ITypeContext
 
 func (s *VectorTypeContext) VECTOR() antlr.TerminalNode
+

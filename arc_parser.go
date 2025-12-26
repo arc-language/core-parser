@@ -315,11 +315,11 @@ func arcparserParserInit() {
 		526, 533, 5, 63, 0, 0, 527, 529, 5, 62, 0, 0, 528, 530, 3, 114, 57, 0,
 		529, 528, 1, 0, 0, 0, 529, 530, 1, 0, 0, 0, 530, 531, 1, 0, 0, 0, 531,
 		533, 5, 63, 0, 0, 532, 518, 1, 0, 0, 0, 532, 520, 1, 0, 0, 0, 532, 527,
-		1, 0, 0, 0, 533, 99, 1, 0, 0, 0, 534, 544, 3, 102, 51, 0, 535, 544, 5,
-		77, 0, 0, 536, 537, 5, 62, 0, 0, 537, 538, 3, 78, 39, 0, 538, 539, 5, 63,
-		0, 0, 539, 544, 1, 0, 0, 0, 540, 544, 3, 116, 58, 0, 541, 544, 3, 118,
-		59, 0, 542, 544, 3, 110, 55, 0, 543, 534, 1, 0, 0, 0, 543, 535, 1, 0, 0,
-		0, 543, 536, 1, 0, 0, 0, 543, 540, 1, 0, 0, 0, 543, 541, 1, 0, 0, 0, 543,
+		1, 0, 0, 0, 533, 99, 1, 0, 0, 0, 534, 544, 3, 102, 51, 0, 535, 544, 3,
+		110, 55, 0, 536, 544, 3, 116, 58, 0, 537, 544, 3, 118, 59, 0, 538, 539,
+		5, 62, 0, 0, 539, 540, 3, 78, 39, 0, 540, 541, 5, 63, 0, 0, 541, 544, 1,
+		0, 0, 0, 542, 544, 5, 77, 0, 0, 543, 534, 1, 0, 0, 0, 543, 535, 1, 0, 0,
+		0, 543, 536, 1, 0, 0, 0, 543, 537, 1, 0, 0, 0, 543, 538, 1, 0, 0, 0, 543,
 		542, 1, 0, 0, 0, 544, 101, 1, 0, 0, 0, 545, 553, 5, 73, 0, 0, 546, 553,
 		5, 74, 0, 0, 547, 553, 5, 75, 0, 0, 548, 553, 5, 76, 0, 0, 549, 553, 5,
 		72, 0, 0, 550, 553, 3, 104, 52, 0, 551, 553, 3, 106, 53, 0, 552, 545, 1,
@@ -10388,13 +10388,13 @@ type IPrimaryExpressionContext interface {
 
 	// Getter signatures
 	Literal() ILiteralContext
-	IDENTIFIER() antlr.TerminalNode
+	StructLiteral() IStructLiteralContext
+	CastExpression() ICastExpressionContext
+	AllocaExpression() IAllocaExpressionContext
 	LPAREN() antlr.TerminalNode
 	Expression() IExpressionContext
 	RPAREN() antlr.TerminalNode
-	CastExpression() ICastExpressionContext
-	AllocaExpression() IAllocaExpressionContext
-	StructLiteral() IStructLiteralContext
+	IDENTIFIER() antlr.TerminalNode
 
 	// IsPrimaryExpressionContext differentiates from other interfaces.
 	IsPrimaryExpressionContext()
@@ -10448,18 +10448,10 @@ func (s *PrimaryExpressionContext) Literal() ILiteralContext {
 	return t.(ILiteralContext)
 }
 
-func (s *PrimaryExpressionContext) IDENTIFIER() antlr.TerminalNode {
-	return s.GetToken(ArcParserIDENTIFIER, 0)
-}
-
-func (s *PrimaryExpressionContext) LPAREN() antlr.TerminalNode {
-	return s.GetToken(ArcParserLPAREN, 0)
-}
-
-func (s *PrimaryExpressionContext) Expression() IExpressionContext {
+func (s *PrimaryExpressionContext) StructLiteral() IStructLiteralContext {
 	var t antlr.RuleContext
 	for _, ctx := range s.GetChildren() {
-		if _, ok := ctx.(IExpressionContext); ok {
+		if _, ok := ctx.(IStructLiteralContext); ok {
 			t = ctx.(antlr.RuleContext)
 			break
 		}
@@ -10469,11 +10461,7 @@ func (s *PrimaryExpressionContext) Expression() IExpressionContext {
 		return nil
 	}
 
-	return t.(IExpressionContext)
-}
-
-func (s *PrimaryExpressionContext) RPAREN() antlr.TerminalNode {
-	return s.GetToken(ArcParserRPAREN, 0)
+	return t.(IStructLiteralContext)
 }
 
 func (s *PrimaryExpressionContext) CastExpression() ICastExpressionContext {
@@ -10508,10 +10496,14 @@ func (s *PrimaryExpressionContext) AllocaExpression() IAllocaExpressionContext {
 	return t.(IAllocaExpressionContext)
 }
 
-func (s *PrimaryExpressionContext) StructLiteral() IStructLiteralContext {
+func (s *PrimaryExpressionContext) LPAREN() antlr.TerminalNode {
+	return s.GetToken(ArcParserLPAREN, 0)
+}
+
+func (s *PrimaryExpressionContext) Expression() IExpressionContext {
 	var t antlr.RuleContext
 	for _, ctx := range s.GetChildren() {
-		if _, ok := ctx.(IStructLiteralContext); ok {
+		if _, ok := ctx.(IExpressionContext); ok {
 			t = ctx.(antlr.RuleContext)
 			break
 		}
@@ -10521,7 +10513,15 @@ func (s *PrimaryExpressionContext) StructLiteral() IStructLiteralContext {
 		return nil
 	}
 
-	return t.(IStructLiteralContext)
+	return t.(IExpressionContext)
+}
+
+func (s *PrimaryExpressionContext) RPAREN() antlr.TerminalNode {
+	return s.GetToken(ArcParserRPAREN, 0)
+}
+
+func (s *PrimaryExpressionContext) IDENTIFIER() antlr.TerminalNode {
+	return s.GetToken(ArcParserIDENTIFIER, 0)
 }
 
 func (s *PrimaryExpressionContext) GetRuleContext() antlr.RuleContext {
@@ -10575,17 +10575,27 @@ func (p *ArcParser) PrimaryExpression() (localctx IPrimaryExpressionContext) {
 		p.EnterOuterAlt(localctx, 2)
 		{
 			p.SetState(535)
-			p.Match(ArcParserIDENTIFIER)
-			if p.HasError() {
-				// Recognition error - abort rule
-				goto errorExit
-			}
+			p.StructLiteral()
 		}
 
 	case 3:
 		p.EnterOuterAlt(localctx, 3)
 		{
 			p.SetState(536)
+			p.CastExpression()
+		}
+
+	case 4:
+		p.EnterOuterAlt(localctx, 4)
+		{
+			p.SetState(537)
+			p.AllocaExpression()
+		}
+
+	case 5:
+		p.EnterOuterAlt(localctx, 5)
+		{
+			p.SetState(538)
 			p.Match(ArcParserLPAREN)
 			if p.HasError() {
 				// Recognition error - abort rule
@@ -10593,11 +10603,11 @@ func (p *ArcParser) PrimaryExpression() (localctx IPrimaryExpressionContext) {
 			}
 		}
 		{
-			p.SetState(537)
+			p.SetState(539)
 			p.Expression()
 		}
 		{
-			p.SetState(538)
+			p.SetState(540)
 			p.Match(ArcParserRPAREN)
 			if p.HasError() {
 				// Recognition error - abort rule
@@ -10605,25 +10615,15 @@ func (p *ArcParser) PrimaryExpression() (localctx IPrimaryExpressionContext) {
 			}
 		}
 
-	case 4:
-		p.EnterOuterAlt(localctx, 4)
-		{
-			p.SetState(540)
-			p.CastExpression()
-		}
-
-	case 5:
-		p.EnterOuterAlt(localctx, 5)
-		{
-			p.SetState(541)
-			p.AllocaExpression()
-		}
-
 	case 6:
 		p.EnterOuterAlt(localctx, 6)
 		{
 			p.SetState(542)
-			p.StructLiteral()
+			p.Match(ArcParserIDENTIFIER)
+			if p.HasError() {
+				// Recognition error - abort rule
+				goto errorExit
+			}
 		}
 
 	case antlr.ATNInvalidAltNumber:
