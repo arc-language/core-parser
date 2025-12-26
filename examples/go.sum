@@ -6,5 +6,7 @@ github.com/arc-language/core-parser v0.0.0-20251223203947-7410926c7ca1 h1:fEvitP
 github.com/arc-language/core-parser v0.0.0-20251223203947-7410926c7ca1/go.mod h1:BLt/5INiwrJOd15QBGG6nUVA8CFJLyeU1+de32mJ9S4=
 github.com/arc-language/core-parser v0.0.0-20251223204336-6a6b4c33b0c0 h1:fu6TfRy/0CLS0LWYcCoN1YYGl/bEOiWFUAPphD4VGvE=
 github.com/arc-language/core-parser v0.0.0-20251223204336-6a6b4c33b0c0/go.mod h1:BLt/5INiwrJOd15QBGG6nUVA8CFJLyeU1+de32mJ9S4=
+github.com/arc-language/core-parser v0.0.0-20251226190037-cdbbec232d82 h1:Ih1qjct4h+gclkBen3QJUI8Shwdv5YrKVIF0XZBxaLY=
+github.com/arc-language/core-parser v0.0.0-20251226190037-cdbbec232d82/go.mod h1:BLt/5INiwrJOd15QBGG6nUVA8CFJLyeU1+de32mJ9S4=
 golang.org/x/exp v0.0.0-20240506185415-9bf2ced13842 h1:vr/HnozRka3pE4EsMEg1lgkXJkTFJCVUX+S/ZT6wYzM=
 golang.org/x/exp v0.0.0-20240506185415-9bf2ced13842/go.mod h1:XtvwrStGgqGPLc4cjQfWqZHG1YFdYs6swckp8vpsjnc=

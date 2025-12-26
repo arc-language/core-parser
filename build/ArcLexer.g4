@@ -45,32 +45,33 @@ MAP: 'map';
 ALLOCA: 'alloca';
 CAST: 'cast';
 
-// Operators
+// Operators (multi-character first!)
+ARROW: '->';
+RANGE: '..';      // Must come before DOT and ELLIPSIS
+ELLIPSIS: '...';  // Must come after RANGE
+
+EQ: '==';
+NE: '!=';
+LE: '<=';
+GE: '>=';
+AND: '&&';
+OR: '||';
+
+PLUS_ASSIGN: '+=';
+MINUS_ASSIGN: '-=';
+
+// Single character operators
 PLUS: '+';
 MINUS: '-';
 STAR: '*';
 SLASH: '/';
 PERCENT: '%';
-
-EQ: '==';
-NE: '!=';
 LT: '<';
-LE: '<=';
 GT: '>';
-GE: '>=';
-
-AND: '&&';
-OR: '||';
 NOT: '!';
-
 AMP: '&';
 AT: '@';
-
 ASSIGN: '=';
-PLUS_ASSIGN: '+=';
-MINUS_ASSIGN: '-=';
-ARROW: '->';
-RANGE: '..';
 
 // Delimiters
 LPAREN: '(';
@@ -82,8 +83,7 @@ RBRACKET: ']';
 COMMA: ',';
 COLON: ':';
 SEMICOLON: ';';
-DOT: '.';
-ELLIPSIS: '...';
+DOT: '.';         // Single dot comes after RANGE and ELLIPSIS
 
 // Literals
 BOOLEAN_LITERAL: 'true' | 'false';
@@ -101,7 +101,7 @@ fragment OCTAL_LITERAL: '0' [oO] [0-7] [0-7_]*;
 fragment BINARY_LITERAL: '0' [bB] [01] [01_]*;
 
 FLOAT_LITERAL
-    : DECIMAL_LITERAL '.' DECIMAL_LITERAL? EXPONENT?
+    : DECIMAL_LITERAL '.' DECIMAL_LITERAL EXPONENT?
     | DECIMAL_LITERAL EXPONENT
     | '.' DECIMAL_LITERAL EXPONENT?
     ;
