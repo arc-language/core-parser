@@ -26,6 +26,11 @@ extern libc {
     func sqrt(float64) float64
 }
 
+extern os {
+    func sleep(int32) int32
+    func usleep(int32) int32
+}
+
 // ============================================================================
 // STRUCT DECLARATIONS WITH INLINE METHODS
 // ============================================================================
@@ -72,6 +77,35 @@ struct Node {
 }
 
 // ============================================================================
+// STRUCT WITH MUTATING METHODS (INLINE)
+// ============================================================================
+
+struct Counter {
+    count: int32
+    
+    mutating increment(self c: *Counter) {
+        c.count = c.count + 1
+    }
+    
+    mutating add(self c: *Counter, value: int32) {
+        c.count = c.count + value
+    }
+    
+    func get_count(self c: Counter) int32 {
+        return c.count
+    }
+}
+
+struct Buffer {
+    data: *byte
+    size: usize
+    
+    mutating clear(self b: *Buffer) {
+        memset(b.data, 0, b.size)
+    }
+}
+
+// ============================================================================
 // STRUCT WITH FLAT METHODS
 // ============================================================================
 
@@ -90,6 +124,25 @@ func contains(self c: Circle, p: Point) bool {
     let dy = p.y - c.center.y
     let dist_sq = dx * dx + dy * dy
     return dist_sq <= (c.radius * c.radius)
+}
+
+// ============================================================================
+// STRUCT WITH MUTATING METHODS (FLAT)
+// ============================================================================
+
+struct Position {
+    x: int32
+    y: int32
+}
+
+mutating reset(self p: *Position) {
+    p.x = 0
+    p.y = 0
+}
+
+mutating translate(self p: *Position, dx: int32, dy: int32) {
+    p.x = p.x + dx
+    p.y = p.y + dy
 }
 
 // ============================================================================
@@ -122,6 +175,26 @@ class Database {
 }
 
 // ============================================================================
+// CLASS WITH ASYNC METHODS (INLINE)
+// ============================================================================
+
+class AsyncClient {
+    name: string
+    port: int32
+    
+    async func fetch_data(self c: *AsyncClient) string {
+        let response = await http_get("https://example.com")
+        return response
+    }
+    
+    async func process_batch(self c: *AsyncClient, items: vector<string>) {
+        for item in items {
+            await process(item)
+        }
+    }
+}
+
+// ============================================================================
 // CLASS WITH FLAT METHODS
 // ============================================================================
 
@@ -140,6 +213,20 @@ func log_error(self l: *Logger, message: string) {
 
 deinit(self l: *Logger) {
     l.level = 0
+}
+
+// ============================================================================
+// CLASS WITH ASYNC FLAT METHODS
+// ============================================================================
+
+class RemoteService {
+    url: string
+    timeout: int32
+}
+
+async func fetch_remote_data(self s: *RemoteService) string {
+    let response = await http_get("https://example.com")
+    return response
 }
 
 // ============================================================================
@@ -176,6 +263,141 @@ func greet(name: string) {
     return
 }
 
+func no_params() {
+    return
+}
+
+// ============================================================================
+// ASYNC FUNCTION DECLARATIONS
+// ============================================================================
+
+async func fetch_data(url: string) string {
+    let response = await http_get(url)
+    return response
+}
+
+async func process_items(items: vector<string>) {
+    for item in items {
+        await process(item)
+    }
+}
+
+async func main_async() int32 {
+    let data = await fetch_data("https://api.example.com")
+    let result1 = await task1()
+    let result2 = await task2()
+    
+    if await check_status() {
+        let x = 1
+    }
+    
+    return 0
+}
+
+// ============================================================================
+// POINTER AND REFERENCE TESTS
+// ============================================================================
+
+func test_pointers_and_references() {
+    // Basic pointer
+    let value: int32 = 42
+    let ptr: *int32 = &value
+    
+    // Void pointer
+    let handle: *void = alloca(void, 64)
+    
+    // Reference
+    let ref: &int32 = value
+    
+    // Null pointer
+    let null_ptr: *int32 = null
+    
+    // Null check
+    if ptr == null {
+        let x = 1
+    }
+    
+    // Dereference read
+    let x = *ptr
+    
+    // Dereference write
+    *ptr = 42
+    
+    // Address-of
+    let addr = &value
+}
+
+// ============================================================================
+// TYPE TESTS - ALL PRIMITIVES
+// ============================================================================
+
+func test_all_types() {
+    // Signed integers
+    let i8: int8 = -128
+    let i16: int16 = -32768
+    let i32: int32 = -500
+    let i64: int64 = -9223372036854775808
+    
+    // Unsigned integers
+    let u8: uint8 = 255
+    let u16: uint16 = 65535
+    let u32: uint32 = 4294967295
+    let u64: uint64 = 10000
+    
+    // Size types
+    let len: usize = 100
+    let offset: isize = -4
+    
+    // Floating point
+    let f32: float32 = 3.14
+    let f64: float64 = 2.71828
+    
+    // Other primitives
+    let b: byte = 255
+    let flag: bool = true
+    let r: char = 'a'
+    let s: string = "hello"
+}
+
+// ============================================================================
+// COLLECTION LITERALS AND OPERATIONS
+// ============================================================================
+
+func test_collections() {
+    // Vector literals
+    let v: vector<int32> = {}
+    let empty: vector<int32> = {}
+    let nums: vector<int32> = {1, 2, 3, 4, 5}
+    let items = {10, 20, 30}
+    
+    // Map literals
+    let m: map<string, int32> = {}
+    let empty_map: map<string, int32> = {}
+    let scores: map<string, int32> = {"alice": 100, "bob": 95}
+    let config = {"host": "localhost", "port": "8080"}
+}
+
+// ============================================================================
+// STRUCT LITERAL TESTS
+// ============================================================================
+
+func test_struct_literals() {
+    // Basic struct literal
+    let p = Point{x: 10.0, y: 20.0}
+    
+    // Type inference
+    let p2 = Point{x: 5.0, y: 15.0}
+    
+    // Empty struct literal
+    let p3: Point = Point{}
+    
+    // Field access
+    let x = p.x
+    
+    // Field assignment
+    p.y = 30.0
+}
+
 // ============================================================================
 // FOR LOOP DEMONSTRATIONS
 // ============================================================================
@@ -186,16 +408,21 @@ func demonstrate_for_loops() {
         let x = i * 2
     }
     
+    // C-style with increment operator
+    for let i = 0; i < 10; i++ {
+        let x = i
+    }
+    
     // Condition-only for loop (while-style)
     let j = 5
     for j > 0 {
-        j = j - 1
+        j--
     }
     
     // Infinite loop with break
     let counter = 0
     for {
-        counter += 1
+        counter++
         
         if counter >= 10 {
             break
@@ -232,7 +459,223 @@ func demonstrate_for_loops() {
 }
 
 // ============================================================================
-// COMPLEX FUNCTION WITH ALL EXPRESSION TYPES
+// INCREMENT/DECREMENT OPERATORS
+// ============================================================================
+
+func test_increment_decrement() {
+    let i = 0
+    let pos = 10
+    
+    // Post-increment/decrement
+    i++
+    pos++
+    i--
+    pos--
+    
+    // Pre-increment/decrement
+    let x = ++i
+    let y = --pos
+    
+    // Post in expressions
+    let a = i++
+    let b = pos--
+}
+
+// ============================================================================
+// POINTER ARITHMETIC
+// ============================================================================
+
+func test_pointer_arithmetic() {
+    let ptr: *int32 = alloca(int32, 10)
+    
+    let next = ptr + 1
+    let prev = ptr - 2
+}
+
+// ============================================================================
+// COMPREHENSIVE OPERATOR TESTS
+// ============================================================================
+
+func test_all_operators(a: int32, b: int32, flag: bool, ptr: *int32) {
+    // Arithmetic
+    let sum = a + b
+    let diff = a - b
+    let prod = a * b
+    let quot = a / b
+    let rem = a % b
+    
+    // Compound assignment
+    let x = 10
+    x += 5
+    x -= 3
+    x *= 2
+    x /= 4
+    x %= 3
+    
+    // Comparison
+    let eq = a == b
+    let ne = a != b
+    let lt = a < b
+    let le = a <= b
+    let gt = a > b
+    let ge = a >= b
+    
+    // Logical
+    let and_op = a && b
+    let or_op = a || b
+    
+    // Unary
+    let neg = -a
+    let not_op = !flag
+    
+    // Range
+    let r = 0..10
+}
+
+// ============================================================================
+// ALLOCA AND INDEXING
+// ============================================================================
+
+func test_alloca_and_indexing() {
+    // Alloca single
+    let ptr = alloca(int32)
+    
+    // Alloca array
+    let buffer = alloca(byte, 1024)
+    
+    // Indexed pointer read
+    let byte_val = buffer[5]
+    
+    // Indexed pointer write
+    buffer[10] = 0x42
+    
+    // Indexed pointer array
+    let array_base: *int32 = alloca(int32, 10)
+    let third_element = array_base[2]
+    array_base[3] = 100
+}
+
+// ============================================================================
+// TYPE CASTING
+// ============================================================================
+
+func test_type_casting() {
+    let value: int32 = 42
+    
+    // Basic cast
+    let result = cast<int64>(value)
+    
+    // Pointer casts
+    let int_ptr: *int32 = alloca(int32)
+    let byte_ptr = cast<*byte>(int_ptr)
+    
+    // Pointer to int
+    let addr = cast<uint64>(int_ptr)
+    
+    // Int to pointer
+    let new_ptr = cast<*int32>(addr)
+    
+    // Void pointer
+    let typed_ptr: *int32 = alloca(int32)
+    let generic = cast<*void>(typed_ptr)
+}
+
+// ============================================================================
+// INTRINSIC FUNCTIONS
+// ============================================================================
+
+func test_intrinsics() {
+    // sizeof
+    let sz = sizeof<int32>
+    let st_sz = sizeof<Point>
+    
+    // alignof
+    let align = alignof<float64>
+    
+    // memset
+    let buf = alloca(byte, 1024)
+    memset(buf, 0, 1024)
+    
+    // memcpy
+    let dest_ptr = alloca(byte, 1024)
+    let src_ptr = alloca(byte, 1024)
+    memcpy(dest_ptr, src_ptr, 1024)
+    
+    // memmove
+    memmove(dest_ptr, src_ptr, 1024)
+    
+    // strlen
+    let cstr: *byte = "hello\0"
+    let len = strlen(cstr)
+    
+    // memchr
+    let buf2: *byte = "hello\nworld"
+    let newline = memchr(buf2, '\n', 11)
+    
+    // memcmp
+    let diff = memcmp(dest_ptr, src_ptr, 1024)
+    
+    // bit_cast
+    let f: float32 = 1.0
+    let bits = bit_cast<uint32>(f)
+}
+
+// ============================================================================
+// VARIADIC FUNCTION INTRINSICS
+// ============================================================================
+
+func printf(fmt: string, ...) {
+    let args = va_start(fmt)
+    let val = va_arg<int32>(args)
+    defer va_end(args)
+}
+
+// ============================================================================
+// RAISE INTRINSIC
+// ============================================================================
+
+func test_raise() {
+    let ptr: *int32 = null
+    if ptr == null {
+        raise("Memory corrupted")
+    }
+}
+
+// ============================================================================
+// SYSCALL
+// ============================================================================
+
+func test_syscall() {
+    let msg = "Hello, Direct Syscall!\n"
+    let len = 23
+    let result = syscall(SYS_WRITE, STDOUT, msg, len)
+}
+
+// ============================================================================
+// CHARACTER LITERALS WITH ESCAPES
+// ============================================================================
+
+func test_char_escapes() {
+    let newline: char = '\n'
+    let tab: char = '\t'
+    let backslash: char = '\\'
+    let quote: char = '\''
+    let null_char: char = '\0'
+}
+
+// ============================================================================
+// STRING LITERALS WITH ESCAPES
+// ============================================================================
+
+func test_string_escapes() {
+    let msg: string = "Hello\nWorld"
+    let path: string = "C:\\Users\\file"
+    let quote: string = "He said \"hello\""
+    let tab: string = "Column1\tColumn2"
+}
+
+// ============================================================================
+// COMPLEX EXPRESSION DEMONSTRATIONS
 // ============================================================================
 
 func demonstrate_expressions(n: int32, p: *Point) bool {
@@ -447,6 +890,21 @@ func process_collections() {
 }
 
 // ============================================================================
+// MUTATING METHOD USAGE
+// ============================================================================
+
+func test_mutating_methods() {
+    let counter = Counter{count: 0}
+    counter.increment()
+    counter.add(5)
+    let value = counter.get_count()
+    
+    let pos = Position{x: 10, y: 20}
+    pos.reset()
+    pos.translate(5, 10)
+}
+
+// ============================================================================
 // CLASS AND STRUCT INTERACTION
 // ============================================================================
 
@@ -481,7 +939,21 @@ func demonstrate_class_struct_interaction() {
 }
 
 // ============================================================================
-// RECURSIVE FUNCTION
+// NESTED STRUCT ACCESS
+// ============================================================================
+
+func test_nested_access() {
+    let rect = Rectangle {
+        top_left: Point { x: 0.0, y: 0.0 },
+        bottom_right: Point { x: 100.0, y: 100.0 },
+        color: 0xFFFFFF
+    }
+    
+    let value = rect.top_left.x
+}
+
+// ============================================================================
+// RECURSIVE FUNCTIONS
 // ============================================================================
 
 func factorial(n: int32) int32 {
@@ -541,6 +1013,9 @@ func main() int32 {
         level: 1
     }
     logger.log_info("Starting application")
+    
+    // Test mutating methods
+    test_mutating_methods()
     
     // Test all loop types
     demonstrate_for_loops()

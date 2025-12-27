@@ -133,7 +133,11 @@ func (l *ArcPrintListener) EnterFunctionDecl(ctx *parser.FunctionDeclContext) {
 	if ctx.Type_() != nil {
 		returnType = ctx.Type_().GetText()
 	}
-	l.printIndent(fmt.Sprintf("⚡ Function: %s -> %s", funcName, returnType))
+	asyncPrefix := ""
+	if ctx.ASYNC() != nil {
+		asyncPrefix = "async "
+	}
+	l.printIndent(fmt.Sprintf("⚡ Function: %s%s -> %s", asyncPrefix, funcName, returnType))
 	l.indent++
 }
 
@@ -204,11 +208,35 @@ func (l *ArcPrintListener) EnterMethodDecl(ctx *parser.MethodDeclContext) {
 	if len(ctx.AllType_()) > 1 {
 		returnType = ctx.AllType_()[len(ctx.AllType_())-1].GetText()
 	}
-	l.printIndent(fmt.Sprintf("🔧 Flat Method: %s(self %s: %s) -> %s", methodName, selfParam, selfType, returnType))
+	asyncPrefix := ""
+	if ctx.ASYNC() != nil {
+		asyncPrefix = "async "
+	}
+	l.printIndent(fmt.Sprintf("🔧 Flat Method: %s%s(self %s: %s) -> %s", asyncPrefix, methodName, selfParam, selfType, returnType))
 	l.indent++
 }
 
 func (l *ArcPrintListener) ExitMethodDecl(ctx *parser.MethodDeclContext) {
+	l.indent--
+}
+
+// ============================================================================
+// MUTATING METHOD DECLARATIONS
+// ============================================================================
+
+func (l *ArcPrintListener) EnterMutatingDecl(ctx *parser.MutatingDeclContext) {
+	methodName := ctx.IDENTIFIER(0).GetText()
+	selfParam := ctx.IDENTIFIER(1).GetText()
+	selfType := ctx.AllType_()[0].GetText()
+	returnType := "void"
+	if len(ctx.AllType_()) > 1 {
+		returnType = ctx.AllType_()[len(ctx.AllType_())-1].GetText()
+	}
+	l.printIndent(fmt.Sprintf("🔄 Mutating Method: %s(self %s: %s) -> %s", methodName, selfParam, selfType, returnType))
+	l.indent++
+}
+
+func (l *ArcPrintListener) ExitMutatingDecl(ctx *parser.MutatingDeclContext) {
 	l.indent--
 }
 
@@ -280,6 +308,12 @@ func (l *ArcPrintListener) EnterAssignmentStmt(ctx *parser.AssignmentStmtContext
 		op = "+="
 	} else if ctx.MINUS_ASSIGN() != nil {
 		op = "-="
+	} else if ctx.STAR_ASSIGN() != nil {
+		op = "*="
+	} else if ctx.SLASH_ASSIGN() != nil {
+		op = "/="
+	} else if ctx.PERCENT_ASSIGN() != nil {
+		op = "%="
 	}
 	l.printIndent(fmt.Sprintf("✏️ Assignment: %s %s", lhs, op))
 	l.indent++
@@ -412,8 +446,12 @@ func (l *ArcPrintListener) EnterPostfixOp(ctx *parser.PostfixOpContext) {
 		} else {
 			l.printIndent(fmt.Sprintf("🔍 Field Access: .%s", ctx.IDENTIFIER().GetText()))
 		}
-	} else if ctx.LPAREN() != nil {
+	} else if ctx.LPAREN() != nil && ctx.DOT() == nil {
 		l.printIndent("📞 Function Call")
+	} else if ctx.INCREMENT() != nil {
+		l.printIndent("➕ Post-Increment (++)")
+	} else if ctx.DECREMENT() != nil {
+		l.printIndent("➖ Post-Decrement (--)")
 	}
 }
 
@@ -432,6 +470,8 @@ func (l *ArcPrintListener) EnterLiteral(ctx *parser.LiteralContext) {
 		l.printIndent(fmt.Sprintf("🔤 Char: %s", ctx.CHAR_LITERAL().GetText()))
 	} else if ctx.BOOLEAN_LITERAL() != nil {
 		l.printIndent(fmt.Sprintf("✓/✗ Boolean: %s", ctx.BOOLEAN_LITERAL().GetText()))
+	} else if ctx.NULL() != nil {
+		l.printIndent("∅ Null")
 	}
 }
 
@@ -449,6 +489,38 @@ func (l *ArcPrintListener) EnterCastExpression(ctx *parser.CastExpressionContext
 
 func (l *ArcPrintListener) ExitCastExpression(ctx *parser.CastExpressionContext) {
 	l.indent--
+}
+
+func (l *ArcPrintListener) EnterIntrinsicExpression(ctx *parser.IntrinsicExpressionContext) {
+	intrinsicName := ""
+	if ctx.SIZEOF() != nil {
+		intrinsicName = "sizeof"
+	} else if ctx.ALIGNOF() != nil {
+		intrinsicName = "alignof"
+	} else if ctx.MEMSET() != nil {
+		intrinsicName = "memset"
+	} else if ctx.MEMCPY() != nil {
+		intrinsicName = "memcpy"
+	} else if ctx.MEMMOVE() != nil {
+		intrinsicName = "memmove"
+	} else if ctx.STRLEN() != nil {
+		intrinsicName = "strlen"
+	} else if ctx.MEMCHR() != nil {
+		intrinsicName = "memchr"
+	} else if ctx.VA_START() != nil {
+		intrinsicName = "va_start"
+	} else if ctx.VA_ARG() != nil {
+		intrinsicName = "va_arg"
+	} else if ctx.VA_END() != nil {
+		intrinsicName = "va_end"
+	} else if ctx.RAISE() != nil {
+		intrinsicName = "raise"
+	} else if ctx.MEMCMP() != nil {
+		intrinsicName = "memcmp"
+	} else if ctx.BIT_CAST() != nil {
+		intrinsicName = "bit_cast"
+	}
+	l.printIndent(fmt.Sprintf("🔧 Intrinsic: %s", intrinsicName))
 }
 
 // ============================================================================
