@@ -6,8 +6,11 @@ NAMESPACE: 'namespace';
 LET: 'let';
 CONST: 'const';
 FUNC: 'func';
+ASYNC: 'async';
+AWAIT: 'await';
 STRUCT: 'struct';
 CLASS: 'class';
+MUTATING: 'mutating';
 DEINIT: 'deinit';
 RETURN: 'return';
 IF: 'if';
@@ -19,6 +22,7 @@ CONTINUE: 'continue';
 DEFER: 'defer';
 EXTERN: 'extern';
 SELF: 'self';
+NULL: 'null';
 
 // Type Keywords
 INT8: 'int8';
@@ -41,10 +45,23 @@ VOID: 'void';
 VECTOR: 'vector';
 MAP: 'map';
 
-// Built-in Functions
+// Built-in Functions/Intrinsics
 ALLOCA: 'alloca';
 CAST: 'cast';
 SYSCALL: 'syscall';
+SIZEOF: 'sizeof';
+ALIGNOF: 'alignof';
+MEMSET: 'memset';
+MEMCPY: 'memcpy';
+MEMMOVE: 'memmove';
+STRLEN: 'strlen';
+MEMCHR: 'memchr';
+VA_START: 'va_start';
+VA_ARG: 'va_arg';
+VA_END: 'va_end';
+RAISE: 'raise';
+MEMCMP: 'memcmp';
+BIT_CAST: 'bit_cast';
 
 // Operators (multi-character first!)
 ARROW: '->';
@@ -58,6 +75,11 @@ AND: '&&';
 OR: '||';
 PLUS_ASSIGN: '+=';
 MINUS_ASSIGN: '-=';
+STAR_ASSIGN: '*=';
+SLASH_ASSIGN: '/=';
+PERCENT_ASSIGN: '%=';
+INCREMENT: '++';
+DECREMENT: '--';
 
 // Single character operators
 PLUS: '+';
@@ -116,7 +138,7 @@ CHAR_LITERAL
     ;
 
 fragment ESCAPE_SEQUENCE
-    : '\\' ['"\\nrt]
+    : '\\' ['"\\nrt0]  // Added \0 for null character
     | '\\' 'x' HEX_DIGIT HEX_DIGIT
     | '\\' 'u' HEX_DIGIT HEX_DIGIT HEX_DIGIT HEX_DIGIT
     | '\\' 'U' HEX_DIGIT HEX_DIGIT HEX_DIGIT HEX_DIGIT HEX_DIGIT HEX_DIGIT HEX_DIGIT HEX_DIGIT

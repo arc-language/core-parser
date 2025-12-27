@@ -57,7 +57,7 @@ externParameterList
 
 // Function Declaration
 functionDecl
-    : FUNC IDENTIFIER LPAREN parameterList? RPAREN type? block
+    : ASYNC? FUNC IDENTIFIER LPAREN parameterList? RPAREN type? block
     ;
 
 parameterList
@@ -100,7 +100,7 @@ classField
 
 // Flat Method Declaration (outside struct/class body)
 methodDecl
-    : FUNC IDENTIFIER LPAREN SELF IDENTIFIER COLON type (COMMA parameter)* RPAREN type? block
+    : MUTATING? ASYNC? FUNC IDENTIFIER LPAREN SELF IDENTIFIER COLON type (COMMA parameter)* RPAREN type? block
     ;
 
 // Deinit Declaration (can be inline or flat)
@@ -174,14 +174,14 @@ statement
     ;
 
 assignmentStmt
-    : leftHandSide (ASSIGN | PLUS_ASSIGN | MINUS_ASSIGN) expression
+    : leftHandSide (ASSIGN | PLUS_ASSIGN | MINUS_ASSIGN | STAR_ASSIGN | SLASH_ASSIGN | PERCENT_ASSIGN) expression
     ;
 
-// FIXED: Reordered to resolve ambiguity
-// The key is to match more specific patterns first
+// Left-hand side patterns for assignment
 leftHandSide
     : STAR postfixExpression              // Pointer dereference: *ptr = value
     | postfixExpression DOT IDENTIFIER    // Field access: obj.field = value
+    | postfixExpression LBRACKET expression RBRACKET  // Index access: arr[i] = value
     | IDENTIFIER                          // Simple variable: x = value
     ;
 
@@ -199,12 +199,6 @@ ifStmt
     ;
 
 // Modern For Loop
-// 1. Infinite: for { }
-// 2. Condition: for x < 10 { }
-// 3. Clause: for let i=0; i<10; i=i+1 { }
-// 4. For-in: for item in collection { }
-// 5. For-in (map): for key, value in map { }
-// 6. Range: for i in 0..10 { }
 forStmt
     : FOR block
     | FOR expression block
@@ -259,7 +253,9 @@ multiplicativeExpression
     ;
 
 unaryExpression
-    : (MINUS | NOT | STAR | AMP) unaryExpression
+    : (MINUS | NOT | STAR | AMP | AWAIT) unaryExpression
+    | INCREMENT unaryExpression   // Pre-increment
+    | DECREMENT unaryExpression   // Pre-decrement
     | postfixExpression
     ;
 
@@ -271,18 +267,21 @@ postfixOp
     : DOT IDENTIFIER
     | DOT IDENTIFIER LPAREN argumentList? RPAREN
     | LPAREN argumentList? RPAREN
+    | LBRACKET expression RBRACKET  // Index access: arr[i]
+    | INCREMENT                      // Post-increment
+    | DECREMENT                      // Post-decrement
     ;
 
-// CRITICAL FIX: structLiteral must come BEFORE IDENTIFIER
-// This allows proper lookahead for patterns like "TypeName{...}"
+// Primary expressions
 primaryExpression
     : literal
-    | structLiteral          // MOVED: Must be before IDENTIFIER
-    | castExpression         // MOVED: Should also be before IDENTIFIER
-    | allocaExpression       // MOVED: Should also be before IDENTIFIER
-    | syscallExpression      // MOVED: Should also be before IDENTIFIER
+    | structLiteral
+    | castExpression
+    | allocaExpression
+    | syscallExpression
+    | intrinsicExpression
     | LPAREN expression RPAREN
-    | IDENTIFIER             // MOVED: Now comes after special forms
+    | IDENTIFIER
     ;
 
 literal
@@ -291,6 +290,7 @@ literal
     | STRING_LITERAL
     | CHAR_LITERAL
     | BOOLEAN_LITERAL
+    | NULL
     | vectorLiteral
     | mapLiteral
     ;
@@ -329,4 +329,21 @@ allocaExpression
 
 syscallExpression
     : SYSCALL LPAREN expression (COMMA expression)* RPAREN
+    ;
+
+// Intrinsic functions
+intrinsicExpression
+    : SIZEOF LT type GT
+    | ALIGNOF LT type GT
+    | MEMSET LPAREN expression COMMA expression COMMA expression RPAREN
+    | MEMCPY LPAREN expression COMMA expression COMMA expression RPAREN
+    | MEMMOVE LPAREN expression COMMA expression COMMA expression RPAREN
+    | STRLEN LPAREN expression RPAREN
+    | MEMCHR LPAREN expression COMMA expression COMMA expression RPAREN
+    | VA_START LPAREN IDENTIFIER RPAREN
+    | VA_ARG LT type GT LPAREN expression RPAREN
+    | VA_END LPAREN expression RPAREN
+    | RAISE LPAREN expression RPAREN
+    | MEMCMP LPAREN expression COMMA expression COMMA expression RPAREN
+    | BIT_CAST LT type GT LPAREN expression RPAREN
     ;

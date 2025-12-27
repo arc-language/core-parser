@@ -191,6 +191,9 @@ type ArcParserListener interface {
 	// EnterSyscallExpression is called when entering the syscallExpression production.
 	EnterSyscallExpression(c *SyscallExpressionContext)
 
+	// EnterIntrinsicExpression is called when entering the intrinsicExpression production.
+	EnterIntrinsicExpression(c *IntrinsicExpressionContext)
+
 	// ExitCompilationUnit is called when exiting the compilationUnit production.
 	ExitCompilationUnit(c *CompilationUnitContext)
 
@@ -373,4 +376,7 @@ type ArcParserListener interface {
 
 	// ExitSyscallExpression is called when exiting the syscallExpression production.
 	ExitSyscallExpression(c *SyscallExpressionContext)
+
+	// ExitIntrinsicExpression is called when exiting the intrinsicExpression production.
+	ExitIntrinsicExpression(c *IntrinsicExpressionContext)
 }

@@ -386,3 +386,9 @@ func (s *BaseArcParserListener) EnterSyscallExpression(ctx *SyscallExpressionCon
 
 // ExitSyscallExpression is called when production syscallExpression is exited.
 func (s *BaseArcParserListener) ExitSyscallExpression(ctx *SyscallExpressionContext) {}
+
+// EnterIntrinsicExpression is called when production intrinsicExpression is entered.
+func (s *BaseArcParserListener) EnterIntrinsicExpression(ctx *IntrinsicExpressionContext) {}
+
+// ExitIntrinsicExpression is called when production intrinsicExpression is exited.
+func (s *BaseArcParserListener) ExitIntrinsicExpression(ctx *IntrinsicExpressionContext) {}

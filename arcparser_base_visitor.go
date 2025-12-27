@@ -251,3 +251,7 @@ func (v *BaseArcParserVisitor) VisitAllocaExpression(ctx *AllocaExpressionContex
 func (v *BaseArcParserVisitor) VisitSyscallExpression(ctx *SyscallExpressionContext) interface{} {
 	return v.VisitChildren(ctx)
 }
+
+func (v *BaseArcParserVisitor) VisitIntrinsicExpression(ctx *IntrinsicExpressionContext) interface{} {
+	return v.VisitChildren(ctx)
+}

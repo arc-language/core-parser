@@ -190,4 +190,7 @@ type ArcParserVisitor interface {
 
 	// Visit a parse tree produced by ArcParser#syscallExpression.
 	VisitSyscallExpression(ctx *SyscallExpressionContext) interface{}
+
+	// Visit a parse tree produced by ArcParser#intrinsicExpression.
+	VisitIntrinsicExpression(ctx *IntrinsicExpressionContext) interface{}
 }
