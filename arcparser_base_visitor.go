@@ -84,6 +84,10 @@ func (v *BaseArcParserVisitor) VisitMethodDecl(ctx *MethodDeclContext) interface
 	return v.VisitChildren(ctx)
 }
 
+func (v *BaseArcParserVisitor) VisitMutatingDecl(ctx *MutatingDeclContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
 func (v *BaseArcParserVisitor) VisitDeinitDecl(ctx *DeinitDeclContext) interface{} {
 	return v.VisitChildren(ctx)
 }

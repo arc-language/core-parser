@@ -237,49 +237,50 @@ const (
 	ArcParserRULE_classMember              = 16
 	ArcParserRULE_classField               = 17
 	ArcParserRULE_methodDecl               = 18
-	ArcParserRULE_deinitDecl               = 19
-	ArcParserRULE_variableDecl             = 20
-	ArcParserRULE_constDecl                = 21
-	ArcParserRULE_type                     = 22
-	ArcParserRULE_primitiveType            = 23
-	ArcParserRULE_pointerType              = 24
-	ArcParserRULE_referenceType            = 25
-	ArcParserRULE_vectorType               = 26
-	ArcParserRULE_mapType                  = 27
-	ArcParserRULE_block                    = 28
-	ArcParserRULE_statement                = 29
-	ArcParserRULE_assignmentStmt           = 30
-	ArcParserRULE_leftHandSide             = 31
-	ArcParserRULE_expressionStmt           = 32
-	ArcParserRULE_returnStmt               = 33
-	ArcParserRULE_ifStmt                   = 34
-	ArcParserRULE_forStmt                  = 35
-	ArcParserRULE_breakStmt                = 36
-	ArcParserRULE_continueStmt             = 37
-	ArcParserRULE_deferStmt                = 38
-	ArcParserRULE_expression               = 39
-	ArcParserRULE_logicalOrExpression      = 40
-	ArcParserRULE_logicalAndExpression     = 41
-	ArcParserRULE_equalityExpression       = 42
-	ArcParserRULE_relationalExpression     = 43
-	ArcParserRULE_rangeExpression          = 44
-	ArcParserRULE_additiveExpression       = 45
-	ArcParserRULE_multiplicativeExpression = 46
-	ArcParserRULE_unaryExpression          = 47
-	ArcParserRULE_postfixExpression        = 48
-	ArcParserRULE_postfixOp                = 49
-	ArcParserRULE_primaryExpression        = 50
-	ArcParserRULE_literal                  = 51
-	ArcParserRULE_vectorLiteral            = 52
-	ArcParserRULE_mapLiteral               = 53
-	ArcParserRULE_mapEntry                 = 54
-	ArcParserRULE_structLiteral            = 55
-	ArcParserRULE_fieldInit                = 56
-	ArcParserRULE_argumentList             = 57
-	ArcParserRULE_castExpression           = 58
-	ArcParserRULE_allocaExpression         = 59
-	ArcParserRULE_syscallExpression        = 60
-	ArcParserRULE_intrinsicExpression      = 61
+	ArcParserRULE_mutatingDecl             = 19
+	ArcParserRULE_deinitDecl               = 20
+	ArcParserRULE_variableDecl             = 21
+	ArcParserRULE_constDecl                = 22
+	ArcParserRULE_type                     = 23
+	ArcParserRULE_primitiveType            = 24
+	ArcParserRULE_pointerType              = 25
+	ArcParserRULE_referenceType            = 26
+	ArcParserRULE_vectorType               = 27
+	ArcParserRULE_mapType                  = 28
+	ArcParserRULE_block                    = 29
+	ArcParserRULE_statement                = 30
+	ArcParserRULE_assignmentStmt           = 31
+	ArcParserRULE_leftHandSide             = 32
+	ArcParserRULE_expressionStmt           = 33
+	ArcParserRULE_returnStmt               = 34
+	ArcParserRULE_ifStmt                   = 35
+	ArcParserRULE_forStmt                  = 36
+	ArcParserRULE_breakStmt                = 37
+	ArcParserRULE_continueStmt             = 38
+	ArcParserRULE_deferStmt                = 39
+	ArcParserRULE_expression               = 40
+	ArcParserRULE_logicalOrExpression      = 41
+	ArcParserRULE_logicalAndExpression     = 42
+	ArcParserRULE_equalityExpression       = 43
+	ArcParserRULE_relationalExpression     = 44
+	ArcParserRULE_rangeExpression          = 45
+	ArcParserRULE_additiveExpression       = 46
+	ArcParserRULE_multiplicativeExpression = 47
+	ArcParserRULE_unaryExpression          = 48
+	ArcParserRULE_postfixExpression        = 49
+	ArcParserRULE_postfixOp                = 50
+	ArcParserRULE_primaryExpression        = 51
+	ArcParserRULE_literal                  = 52
+	ArcParserRULE_vectorLiteral            = 53
+	ArcParserRULE_mapLiteral               = 54
+	ArcParserRULE_mapEntry                 = 55
+	ArcParserRULE_structLiteral            = 56
+	ArcParserRULE_fieldInit                = 57
+	ArcParserRULE_argumentList             = 58
+	ArcParserRULE_castExpression           = 59
+	ArcParserRULE_allocaExpression         = 60
+	ArcParserRULE_syscallExpression        = 61
+	ArcParserRULE_intrinsicExpression      = 62
 )
     ArcParser rules.
 
@@ -361,6 +362,7 @@ func InitEmptyMapLiteralContext(p *MapLiteralContext)
 func InitEmptyMapTypeContext(p *MapTypeContext)
 func InitEmptyMethodDeclContext(p *MethodDeclContext)
 func InitEmptyMultiplicativeExpressionContext(p *MultiplicativeExpressionContext)
+func InitEmptyMutatingDeclContext(p *MutatingDeclContext)
 func InitEmptyNamespaceDeclContext(p *NamespaceDeclContext)
 func InitEmptyParameterContext(p *ParameterContext)
 func InitEmptyParameterListContext(p *ParameterListContext)
@@ -552,6 +554,8 @@ func (p *ArcParser) MethodDecl() (localctx IMethodDeclContext)
 
 func (p *ArcParser) MultiplicativeExpression() (localctx IMultiplicativeExpressionContext)
 
+func (p *ArcParser) MutatingDecl() (localctx IMutatingDeclContext)
+
 func (p *ArcParser) NamespaceDecl() (localctx INamespaceDeclContext)
 
 func (p *ArcParser) Parameter() (localctx IParameterContext)
@@ -659,6 +663,9 @@ type ArcParserListener interface {
 
 	// EnterMethodDecl is called when entering the methodDecl production.
 	EnterMethodDecl(c *MethodDeclContext)
+
+	// EnterMutatingDecl is called when entering the mutatingDecl production.
+	EnterMutatingDecl(c *MutatingDeclContext)
 
 	// EnterDeinitDecl is called when entering the deinitDecl production.
 	EnterDeinitDecl(c *DeinitDeclContext)
@@ -845,6 +852,9 @@ type ArcParserListener interface {
 
 	// ExitMethodDecl is called when exiting the methodDecl production.
 	ExitMethodDecl(c *MethodDeclContext)
+
+	// ExitMutatingDecl is called when exiting the mutatingDecl production.
+	ExitMutatingDecl(c *MutatingDeclContext)
 
 	// ExitDeinitDecl is called when exiting the deinitDecl production.
 	ExitDeinitDecl(c *DeinitDeclContext)
@@ -1037,6 +1047,9 @@ type ArcParserVisitor interface {
 
 	// Visit a parse tree produced by ArcParser#methodDecl.
 	VisitMethodDecl(ctx *MethodDeclContext) interface{}
+
+	// Visit a parse tree produced by ArcParser#mutatingDecl.
+	VisitMutatingDecl(ctx *MutatingDeclContext) interface{}
 
 	// Visit a parse tree produced by ArcParser#deinitDecl.
 	VisitDeinitDecl(ctx *DeinitDeclContext) interface{}
@@ -1368,6 +1381,9 @@ func (s *BaseArcParserListener) EnterMultiplicativeExpression(ctx *Multiplicativ
     EnterMultiplicativeExpression is called when production
     multiplicativeExpression is entered.
 
+func (s *BaseArcParserListener) EnterMutatingDecl(ctx *MutatingDeclContext)
+    EnterMutatingDecl is called when production mutatingDecl is entered.
+
 func (s *BaseArcParserListener) EnterNamespaceDecl(ctx *NamespaceDeclContext)
     EnterNamespaceDecl is called when production namespaceDecl is entered.
 
@@ -1569,6 +1585,9 @@ func (s *BaseArcParserListener) ExitMultiplicativeExpression(ctx *Multiplicative
     ExitMultiplicativeExpression is called when production
     multiplicativeExpression is exited.
 
+func (s *BaseArcParserListener) ExitMutatingDecl(ctx *MutatingDeclContext)
+    ExitMutatingDecl is called when production mutatingDecl is exited.
+
 func (s *BaseArcParserListener) ExitNamespaceDecl(ctx *NamespaceDeclContext)
     ExitNamespaceDecl is called when production namespaceDecl is exited.
 
@@ -1727,6 +1746,8 @@ func (v *BaseArcParserVisitor) VisitMapType(ctx *MapTypeContext) interface{}
 func (v *BaseArcParserVisitor) VisitMethodDecl(ctx *MethodDeclContext) interface{}
 
 func (v *BaseArcParserVisitor) VisitMultiplicativeExpression(ctx *MultiplicativeExpressionContext) interface{}
+
+func (v *BaseArcParserVisitor) VisitMutatingDecl(ctx *MutatingDeclContext) interface{}
 
 func (v *BaseArcParserVisitor) VisitNamespaceDecl(ctx *NamespaceDeclContext) interface{}
 
@@ -3144,7 +3165,6 @@ type IMethodDeclContext interface {
 	Type_(i int) ITypeContext
 	RPAREN() antlr.TerminalNode
 	Block() IBlockContext
-	MUTATING() antlr.TerminalNode
 	ASYNC() antlr.TerminalNode
 	AllCOMMA() []antlr.TerminalNode
 	COMMA(i int) antlr.TerminalNode
@@ -3177,6 +3197,33 @@ type IMultiplicativeExpressionContext interface {
 }
     IMultiplicativeExpressionContext is an interface to support dynamic
     dispatch.
+
+type IMutatingDeclContext interface {
+	antlr.ParserRuleContext
+
+	// GetParser returns the parser.
+	GetParser() antlr.Parser
+
+	// Getter signatures
+	MUTATING() antlr.TerminalNode
+	AllIDENTIFIER() []antlr.TerminalNode
+	IDENTIFIER(i int) antlr.TerminalNode
+	LPAREN() antlr.TerminalNode
+	SELF() antlr.TerminalNode
+	COLON() antlr.TerminalNode
+	AllType_() []ITypeContext
+	Type_(i int) ITypeContext
+	RPAREN() antlr.TerminalNode
+	Block() IBlockContext
+	AllCOMMA() []antlr.TerminalNode
+	COMMA(i int) antlr.TerminalNode
+	AllParameter() []IParameterContext
+	Parameter(i int) IParameterContext
+
+	// IsMutatingDeclContext differentiates from other interfaces.
+	IsMutatingDeclContext()
+}
+    IMutatingDeclContext is an interface to support dynamic dispatch.
 
 type INamespaceDeclContext interface {
 	antlr.ParserRuleContext
@@ -3492,6 +3539,7 @@ type IStructMemberContext interface {
 	// Getter signatures
 	StructField() IStructFieldContext
 	FunctionDecl() IFunctionDeclContext
+	MutatingDecl() IMutatingDeclContext
 
 	// IsStructMemberContext differentiates from other interfaces.
 	IsStructMemberContext()
@@ -3529,6 +3577,7 @@ type ITopLevelDeclContext interface {
 	StructDecl() IStructDeclContext
 	ClassDecl() IClassDeclContext
 	MethodDecl() IMethodDeclContext
+	MutatingDecl() IMutatingDeclContext
 	DeinitDecl() IDeinitDeclContext
 	VariableDecl() IVariableDeclContext
 	ConstDecl() IConstDeclContext
@@ -4083,8 +4132,6 @@ func (*MethodDeclContext) IsMethodDeclContext()
 
 func (s *MethodDeclContext) LPAREN() antlr.TerminalNode
 
-func (s *MethodDeclContext) MUTATING() antlr.TerminalNode
-
 func (s *MethodDeclContext) Parameter(i int) IParameterContext
 
 func (s *MethodDeclContext) RPAREN() antlr.TerminalNode
@@ -4133,6 +4180,57 @@ func (s *MultiplicativeExpressionContext) STAR(i int) antlr.TerminalNode
 func (s *MultiplicativeExpressionContext) ToStringTree(ruleNames []string, recog antlr.Recognizer) string
 
 func (s *MultiplicativeExpressionContext) UnaryExpression(i int) IUnaryExpressionContext
+
+type MutatingDeclContext struct {
+	antlr.BaseParserRuleContext
+	// Has unexported fields.
+}
+
+func NewEmptyMutatingDeclContext() *MutatingDeclContext
+
+func NewMutatingDeclContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *MutatingDeclContext
+
+func (s *MutatingDeclContext) Accept(visitor antlr.ParseTreeVisitor) interface{}
+
+func (s *MutatingDeclContext) AllCOMMA() []antlr.TerminalNode
+
+func (s *MutatingDeclContext) AllIDENTIFIER() []antlr.TerminalNode
+
+func (s *MutatingDeclContext) AllParameter() []IParameterContext
+
+func (s *MutatingDeclContext) AllType_() []ITypeContext
+
+func (s *MutatingDeclContext) Block() IBlockContext
+
+func (s *MutatingDeclContext) COLON() antlr.TerminalNode
+
+func (s *MutatingDeclContext) COMMA(i int) antlr.TerminalNode
+
+func (s *MutatingDeclContext) EnterRule(listener antlr.ParseTreeListener)
+
+func (s *MutatingDeclContext) ExitRule(listener antlr.ParseTreeListener)
+
+func (s *MutatingDeclContext) GetParser() antlr.Parser
+
+func (s *MutatingDeclContext) GetRuleContext() antlr.RuleContext
+
+func (s *MutatingDeclContext) IDENTIFIER(i int) antlr.TerminalNode
+
+func (*MutatingDeclContext) IsMutatingDeclContext()
+
+func (s *MutatingDeclContext) LPAREN() antlr.TerminalNode
+
+func (s *MutatingDeclContext) MUTATING() antlr.TerminalNode
+
+func (s *MutatingDeclContext) Parameter(i int) IParameterContext
+
+func (s *MutatingDeclContext) RPAREN() antlr.TerminalNode
+
+func (s *MutatingDeclContext) SELF() antlr.TerminalNode
+
+func (s *MutatingDeclContext) ToStringTree(ruleNames []string, recog antlr.Recognizer) string
+
+func (s *MutatingDeclContext) Type_(i int) ITypeContext
 
 type NamespaceDeclContext struct {
 	antlr.BaseParserRuleContext
@@ -4719,6 +4817,8 @@ func (s *StructMemberContext) GetRuleContext() antlr.RuleContext
 
 func (*StructMemberContext) IsStructMemberContext()
 
+func (s *StructMemberContext) MutatingDecl() IMutatingDeclContext
+
 func (s *StructMemberContext) StructField() IStructFieldContext
 
 func (s *StructMemberContext) ToStringTree(ruleNames []string, recog antlr.Recognizer) string
@@ -4792,6 +4892,8 @@ func (s *TopLevelDeclContext) GetRuleContext() antlr.RuleContext
 func (*TopLevelDeclContext) IsTopLevelDeclContext()
 
 func (s *TopLevelDeclContext) MethodDecl() IMethodDeclContext
+
+func (s *TopLevelDeclContext) MutatingDecl() IMutatingDeclContext
 
 func (s *TopLevelDeclContext) StructDecl() IStructDeclContext
 

@@ -65,6 +65,9 @@ type ArcParserListener interface {
 	// EnterMethodDecl is called when entering the methodDecl production.
 	EnterMethodDecl(c *MethodDeclContext)
 
+	// EnterMutatingDecl is called when entering the mutatingDecl production.
+	EnterMutatingDecl(c *MutatingDeclContext)
+
 	// EnterDeinitDecl is called when entering the deinitDecl production.
 	EnterDeinitDecl(c *DeinitDeclContext)
 
@@ -250,6 +253,9 @@ type ArcParserListener interface {
 
 	// ExitMethodDecl is called when exiting the methodDecl production.
 	ExitMethodDecl(c *MethodDeclContext)
+
+	// ExitMutatingDecl is called when exiting the mutatingDecl production.
+	ExitMutatingDecl(c *MutatingDeclContext)
 
 	// ExitDeinitDecl is called when exiting the deinitDecl production.
 	ExitDeinitDecl(c *DeinitDeclContext)

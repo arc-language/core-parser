@@ -30,6 +30,7 @@ topLevelDecl
     | structDecl
     | classDecl
     | methodDecl
+    | mutatingDecl
     | deinitDecl
     | variableDecl
     | constDecl
@@ -77,6 +78,7 @@ structDecl
 structMember
     : structField
     | functionDecl
+    | mutatingDecl
     ;
 
 structField
@@ -100,7 +102,12 @@ classField
 
 // Flat Method Declaration (outside struct/class body)
 methodDecl
-    : MUTATING? ASYNC? FUNC IDENTIFIER LPAREN SELF IDENTIFIER COLON type (COMMA parameter)* RPAREN type? block
+    : ASYNC? FUNC IDENTIFIER LPAREN SELF IDENTIFIER COLON type (COMMA parameter)* RPAREN type? block
+    ;
+
+// Mutating Method Declaration (like deinit, just the keyword)
+mutatingDecl
+    : MUTATING IDENTIFIER LPAREN SELF IDENTIFIER COLON type (COMMA parameter)* RPAREN type? block
     ;
 
 // Deinit Declaration (can be inline or flat)

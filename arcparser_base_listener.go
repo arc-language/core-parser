@@ -135,6 +135,12 @@ func (s *BaseArcParserListener) EnterMethodDecl(ctx *MethodDeclContext) {}
 // ExitMethodDecl is called when production methodDecl is exited.
 func (s *BaseArcParserListener) ExitMethodDecl(ctx *MethodDeclContext) {}
 
+// EnterMutatingDecl is called when production mutatingDecl is entered.
+func (s *BaseArcParserListener) EnterMutatingDecl(ctx *MutatingDeclContext) {}
+
+// ExitMutatingDecl is called when production mutatingDecl is exited.
+func (s *BaseArcParserListener) ExitMutatingDecl(ctx *MutatingDeclContext) {}
+
 // EnterDeinitDecl is called when production deinitDecl is entered.
 func (s *BaseArcParserListener) EnterDeinitDecl(ctx *DeinitDeclContext) {}
 
